@@ -5,7 +5,8 @@ filetype plugin indent on
 
 " --- Settings ---
 syntax on
-colorscheme oceandeep
+" colorsbox-stnight oceandeep
+colorscheme colorsbox-stnight
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set encoding=utf-8
 set fileencoding=utf-8
@@ -36,4 +37,4 @@ let g:ctrlp_user_command = 'find %s -type f'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " map Ctrl+c to insert text in function
-imap <C-c> <CR><Esc>O
+imap <C-c> <CR><Esc>
