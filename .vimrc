@@ -39,4 +39,4 @@ let g:ctrlp_user_command = 'find %s -type f'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " map Ctrl+c to insert text in function
-imap <C-c> <CR><Esc>
+imap <C-c> <CR><Esc>O
