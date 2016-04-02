@@ -7,6 +7,16 @@ filetype plugin indent on
 syntax on
 " colorsbox-stnight oceandeep
 colorscheme colorsbox-stnight
+
+" Tabs
+" show existing tab with 4 spaces width
+set tabstop=4 shiftwidth=4 expandtab
+
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+" let g:indent_guides_enable_on_vim_startup = 1
+
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set encoding=utf-8
 set fileencoding=utf-8
@@ -19,14 +29,6 @@ set scrolloff=3
 set hlsearch
 " Line numbers
 set number
-
-" Tabs
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
 
 " Ctrl-p settings
 let g:ctrlp_map = '<c-p>'
