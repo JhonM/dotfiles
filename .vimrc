@@ -26,6 +26,11 @@ set cursorline
 set mouse=a
 set scrolloff=3
 
+" no .swp files wile editing file
+set nobackup
+set swapfile
+set dir=~/tmp
+
 set hlsearch
 " Line numbers
 set number
