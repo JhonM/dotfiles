@@ -3,6 +3,8 @@ call pathogen#helptags()
 syntax on
 filetype plugin indent on
 
+let g:ycm_path_to_python_interpreter="/usr/bin/python"
+
 " --- Settings ---
 syntax on
 " colorsbox-stnight oceandeep
@@ -40,3 +42,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 " map Ctrl+c to insert text in function
 imap <C-c> <CR><Esc>O
+
+" Alias for Bdelete delete buffer
+:nnoremap <Leader>q :Bdelete<CR>
