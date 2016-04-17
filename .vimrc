@@ -29,7 +29,10 @@ set scrolloff=3
 " no .swp files wile editing file
 set nobackup
 set swapfile
-set dir=~/tmp
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+" set dir=~/tmp
 
 set hlsearch
 " Line numbers
