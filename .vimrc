@@ -7,8 +7,8 @@ let g:ycm_path_to_python_interpreter="/usr/bin/python"
 
 " --- Settings ---
 syntax on
-" colorsbox-stnight oceandeep
-colorscheme colorsbox-stnight
+" colorsbox-stnight oceandeep lucario
+colorscheme lucario
 
 " Tabs
 " show existing tab with 4 spaces width
@@ -29,8 +29,21 @@ set mouse=a
 set scrolloff=3
 
 " no .swp files wile editing file
-set nobackup
-set swapfile
+" set nobackup
+"set swapfile
+if !isdirectory(expand("~/.vim/backupdir/"))
+    silent !echo "Creating backup dir..."
+    silent !mkdir -p ~/.vim/backupdir
+endif
+if !isdirectory(expand("~/.vim/swap/"))
+    silent !echo "Creating swap dir..."
+    silent !mkdir -p ~/.vim/swap
+endif
+if !isdirectory(expand("~/.vim/undo/"))
+    silent !echo "Creating undo dir..."
+    silent !mkdir -p ~/.vim/undo
+endif
+
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
@@ -45,6 +58,11 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|bower_components)$',
+  \ 'file': '\v\.(DS_Store|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
