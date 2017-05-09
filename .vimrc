@@ -19,6 +19,13 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 " let g:indent_guides_enable_on_vim_startup = 1
 
+set guifont=Inconsolata\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+set  rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set encoding=utf-8
 set fileencoding=utf-8
@@ -27,10 +34,18 @@ set laststatus=2
 set cursorline
 set mouse=a
 set scrolloff=3
+set autoread
+
+if has("gui_running")
+    let s:uname = system("uname")
+    if s:uname == "jhonmajoor\n"
+        set guifont=Inconsolata\ for\ Powerline:h15
+    endif
+endif
 
 " no .swp files wile editing file
 " set nobackup
-"set swapfile
+" set swapfile
 if !isdirectory(expand("~/.vim/backupdir/"))
     silent !echo "Creating backup dir..."
     silent !mkdir -p ~/.vim/backupdir
@@ -44,9 +59,9 @@ if !isdirectory(expand("~/.vim/undo/"))
     silent !mkdir -p ~/.vim/undo
 endif
 
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+" set backupdir=~/.vim/backup//
+" set directory=~/.vim/swap//
+" set undodir=~/.vim/undo//
 " set dir=~/tmp
 
 set hlsearch
@@ -58,11 +73,6 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = 'find %s -type f'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules|bower_components)$',
-  \ 'file': '\v\.(DS_Store|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
