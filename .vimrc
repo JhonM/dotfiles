@@ -43,6 +43,9 @@ if has("gui_running")
     endif
 endif
 
+" set hightlight for handlebars templates
+au BufReadPost *.hbs set syntax=mustache
+
 " no .swp files wile editing file
 " set nobackup
 " set swapfile
