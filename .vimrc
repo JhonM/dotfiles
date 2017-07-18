@@ -1,35 +1,19 @@
-execute pathogen#infect()
-call pathogen#helptags()
-syntax on
-filetype plugin indent on
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-let g:ycm_path_to_python_interpreter="/usr/bin/python"
-
-" --- Settings ---
-syntax on
-" colorsbox-stnight oceandeep lucario
-colorscheme lucario
-
-" Tabs
-" show existing tab with 4 spaces width
-set tabstop=4 shiftwidth=4 expandtab
-
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-" let g:indent_guides_enable_on_vim_startup = 1
-
+" Normal settings
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
+let g:syntastic_javascript_checkers = ['eslint']
+colorscheme nova
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
-set  rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-set encoding=utf-8
-set fileencoding=utf-8
-set backspace=indent,eol,start
+set backspace=2
+" set backspace=indent,eol,start
 set laststatus=2
 set cursorline
 set mouse=a
@@ -42,45 +26,131 @@ if has("gui_running")
         set guifont=Inconsolata\ for\ Powerline:h15
     endif
 endif
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" set hightlight for handlebars templates
-au BufReadPost *.hbs set syntax=mustache
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" no .swp files wile editing file
-" set nobackup
-" set swapfile
-if !isdirectory(expand("~/.vim/backupdir/"))
-    silent !echo "Creating backup dir..."
-    silent !mkdir -p ~/.vim/backupdir
-endif
-if !isdirectory(expand("~/.vim/swap/"))
-    silent !echo "Creating swap dir..."
-    silent !mkdir -p ~/.vim/swap
-endif
-if !isdirectory(expand("~/.vim/undo/"))
-    silent !echo "Creating undo dir..."
-    silent !mkdir -p ~/.vim/undo
-endif
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
 
-" set backupdir=~/.vim/backup//
-" set directory=~/.vim/swap//
-" set undodir=~/.vim/undo//
-" set dir=~/tmp
+Plugin 'gmarik/vundle'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'spf13/vim-colors'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'rhysd/conflict-marker.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'vim-scripts/sessionman.vim'
+Plugin 'matchit.zip'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'powerline/fonts'
+Plugin 'bling/vim-bufferline'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'mbbill/undotree'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'vim-scripts/restore_view.vim'
+Plugin 'mhinz/vim-signify'
+Plugin 'tpope/vim-abolish.git'
+Plugin 'osyo-manga/vim-over'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'gcmt/wildfire.vim'
+Plugin 'reedes/vim-litecorrect'
+Plugin 'reedes/vim-textobj-sentence'
+Plugin 'reedes/vim-textobj-quote'
+Plugin 'reedes/vim-wordy'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-commentary'
+Plugin 'godlygeek/tabular'
+Plugin 'luochen1990/rainbow'
+Plugin 'majutsushi/tagbar'
+Plugin 'Shougo/neocomplete.vim.git'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'honza/vim-snippets'
+Plugin 'spf13/PIV'
+Plugin 'arnaud-lb/vim-php-namespace'
+Plugin 'beyondwords/vim-twig'
+Plugin 'klen/python-mode'
+Plugin 'yssource/python.vim'
+Plugin 'python_match.vim'
+Plugin 'pythoncomplete'
+Plugin 'elzr/vim-json'
+Plugin 'groenewege/vim-less'
+Plugin 'pangloss/vim-javascript'
+Plugin 'briancollins/vim-jst'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'amirh/HTML-AutoCloseTag'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'gorodinskiy/vim-coloresque'
+Plugin 'tpope/vim-haml'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-rails'
+Plugin 'rust-lang/rust.vim'
+Plugin 'tpope/vim-markdown'
+Plugin 'spf13/vim-preview'
+Plugin 'tpope/vim-cucumber'
+Plugin 'cespare/vim-toml'
+Plugin 'quentindecock/vim-cucumber-align-pipes'
+Plugin 'saltstack/salt-vim'
+Plugin 'joukevandermaas/vim-ember-hbs'
+Plugin 'mxw/vim-jsx'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'dkprice/vim-easygrep'
+Plugin 'trevordmiller/nova-vim'
+Plugin 'neovim/neovim'
+Plugin 'Lokaltog/powerline'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 set hlsearch
 " Line numbers
 set number
 
 " Ctrl-p settings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = 'find %s -type f'
+" Set no max file limit
+let g:ctrlp_max_files = 0
+" Search from current directory instead of project root
+let g:ctrlp_working_path_mode = 0
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-
-" map Ctrl+c to insert text in function
-imap <C-c> <CR><Esc>O
+" Ignore these directories
+set wildignore+=*/node_modules/**
+set wildignore+=*/bower_components/**
+set wildignore+=*/.git/**
+set wildignore+=*/tmp/**
 
 " Alias for Bdelete delete buffer
 :nnoremap <Leader>q :Bdelete<CR>
@@ -91,4 +161,5 @@ imap <C-c> <CR><Esc>O
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Ctrl + n toggle nerd tree
-map <C-n> :NERDTreeToggle<CR>
+map <C-e> :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen=1
