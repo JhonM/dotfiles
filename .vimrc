@@ -10,13 +10,19 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
-set backspace=2
-" set backspace=indent,eol,start
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set backspace=indent,eol,start
 set laststatus=2
 set cursorline
 set mouse=a
 set scrolloff=3
 set autoread
+set tabstop=2 shiftwidth=2 expandtab
+
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
 
 " swap files dest
 set dir=/tmp
