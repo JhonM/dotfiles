@@ -182,7 +182,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
 let g:syntastic_javascript_checkers = ['eslint']
-
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
 
 "//////////////// Neocomplete ////////////////
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
