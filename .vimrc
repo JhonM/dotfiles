@@ -14,6 +14,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set backspace=indent,eol,start
 set laststatus=2
 set cursorline
+set smarttab
 set mouse=a
 set scrolloff=3
 set autoread
