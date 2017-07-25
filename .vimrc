@@ -18,7 +18,8 @@ set smarttab
 set mouse=a
 set scrolloff=3
 set autoread
-set tabstop=2 shiftwidth=2 expandtab
+" set tabstop=2 shiftwidth=2 expandtab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
@@ -171,6 +172,7 @@ set wildignore+=*/tmp/**
 " Ctrl + n toggle nerd tree
 map <C-e> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
+let NERDTreeShowHidden=1
 
 "//////////////// Syntastic ////////////////
 set statusline+=%#warningmsg#
