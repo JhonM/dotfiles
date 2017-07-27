@@ -145,6 +145,15 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" CTRL-SHIFT-Right is next tab
+noremap <C-S-Right> :<C-U>bnext<CR>
+inoremap <C-S-Right> <C-\><C-N>:bnext<CR>
+cnoremap <C-S-Right> <C-C>:bnext<CR>
+" CTRL-SHIFT-Left is previous tab
+noremap <C-S-Left> :<C-U>bprevious<CR>
+inoremap <C-S-Left> <C-\><C-N>:bprevious<CR>
+cnoremap <C-S-Left> <C-C>:bprevious<CR>
+
 set hlsearch
 " Line numbers
 set number
