@@ -283,6 +283,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 "//////////////// Undotree ////////////////
 if has("persistent_undo")
-    set undodir=~/.undodir/
+    set undodir=~/.vim/undodir/
     set undofile
 endif
