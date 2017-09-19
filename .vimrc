@@ -129,6 +129,8 @@ Plugin 'dkprice/vim-easygrep'
 Plugin 'trevordmiller/nova-vim'
 Plugin 'neovim/neovim'
 Plugin 'Lokaltog/powerline'
+Plugin 'blueyed/vim-diminactive'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
