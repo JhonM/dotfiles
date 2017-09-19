@@ -110,7 +110,7 @@ Plugin 'briancollins/vim-jst'
 Plugin 'kchmck/vim-coffee-script'
 " Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'gorodinskiy/vim-coloresque'
+Plugin 'sangwook/vim-coloresque'
 Plugin 'tpope/vim-haml'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-rails'
@@ -194,6 +194,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_python_checkers= ['python']
+let g:pymode_rope = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 
