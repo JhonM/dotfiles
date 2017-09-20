@@ -297,3 +297,6 @@ if has("persistent_undo")
     set undodir=~/.vim/undodir/
     set undofile
 endif
+"//////////////// Diminactive ////////////////
+let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix', 'help']
+let g:diminactive_enable_focus = 1
