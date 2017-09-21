@@ -47,13 +47,13 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
-Plugin 'gmarik/vundle'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'mileszs/ack.vim'
+" Plugin 'gmarik/vundle'
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'tomtom/tlib_vim'
+" Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'spf13/vim-colors'
+" Plugin 'altercation/vim-colors-solarized'
+" Plugin 'spf13/vim-colors'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'rhysd/conflict-marker.vim'
@@ -83,22 +83,22 @@ Plugin 'reedes/vim-litecorrect'
 Plugin 'reedes/vim-textobj-sentence'
 Plugin 'reedes/vim-textobj-quote'
 Plugin 'reedes/vim-wordy'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
-Plugin 'luochen1990/rainbow'
+" Plugin 'luochen1990/rainbow'
 " Plugin 'majutsushi/tagbar'
 Plugin 'Shougo/neocomplete.vim.git'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'honza/vim-snippets'
 Plugin 'spf13/PIV'
-Plugin 'arnaud-lb/vim-php-namespace'
-Plugin 'beyondwords/vim-twig'
+" Plugin 'arnaud-lb/vim-php-namespace'
+" Plugin 'beyondwords/vim-twig'
 Plugin 'klen/python-mode'
 Plugin 'yssource/python.vim'
 Plugin 'python_match.vim'
@@ -107,19 +107,19 @@ Plugin 'elzr/vim-json'
 Plugin 'groenewege/vim-less'
 Plugin 'pangloss/vim-javascript'
 Plugin 'briancollins/vim-jst'
-Plugin 'kchmck/vim-coffee-script'
+" Plugin 'kchmck/vim-coffee-script'
 " Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'sangwook/vim-coloresque'
-Plugin 'tpope/vim-haml'
+" Plugin 'tpope/vim-haml'
 Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-rails'
-Plugin 'rust-lang/rust.vim'
+" Plugin 'tpope/vim-rails'
+" Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'spf13/vim-preview'
-Plugin 'tpope/vim-cucumber'
+" Plugin 'tpope/vim-cucumber'
 Plugin 'cespare/vim-toml'
-Plugin 'quentindecock/vim-cucumber-align-pipes'
+" Plugin 'quentindecock/vim-cucumber-align-pipes'
 Plugin 'saltstack/salt-vim'
 Plugin 'joukevandermaas/vim-ember-hbs'
 Plugin 'mxw/vim-jsx'
@@ -131,6 +131,7 @@ Plugin 'neovim/neovim'
 Plugin 'Lokaltog/powerline'
 Plugin 'blueyed/vim-diminactive'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -185,21 +186,28 @@ map <C-e> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 
-"//////////////// Syntastic ////////////////
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"//////////////// ALE ////////////////
+" subset of linters to run
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_python_checkers= ['python']
-let g:pymode_rope = 0
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
+" :ALEFix will try and fix your JS code with ESLint.
+"let g:ale_fixers = {
+"\   'javascript': ['eslint'],
+"\}
+
+" Set this setting in vimrc if you want to fix files automatically on save.
+" This is off by default.
+"let g:ale_fix_on_save = 1
+
+let g:ale_completion_enabled = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 "//////////////// Neocomplete ////////////////
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
@@ -290,6 +298,7 @@ map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 "//////////////// Airline ////////////////
+let g:airline_theme='lucius'
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#left_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
