@@ -20,6 +20,7 @@ set scrolloff=3
 set autoread
 " set tabstop=2 shiftwidth=2 expandtab
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+set statusline+=%F
 
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
@@ -193,7 +194,7 @@ augroup FiletypeGroup
 augroup END
 
 " subset of linters to run
-let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint']}
+let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'] }
 let g:ale_linter_aliases = {'jsx': 'css'}
 
 " :ALEFix will try and fix your JS code with ESLint.
@@ -216,7 +217,7 @@ let g:ale_open_list = 1
 " some other plugin which sets quickfix errors, etc.
 let g:ale_keep_list_window_open = 1
 let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_quickfix = 0
 
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
@@ -288,6 +289,13 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+"///////////////// Pymode //////////////////
+let g:pymode_options = 0
+let g:pymode_lint_signs = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_autoimport = 0
+let g:pymode_rope = 0
 
 "//////////////// Easymotion ////////////////
 " For perlomni.vim setting.
