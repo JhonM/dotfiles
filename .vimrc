@@ -10,7 +10,8 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+"set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.fzf
 set backspace=indent,eol,start
 set laststatus=2
 set cursorline
@@ -59,8 +60,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'rhysd/conflict-marker.vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
+"Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'vim-scripts/sessionman.vim'
 Plugin 'matchit.zip'
@@ -164,9 +166,9 @@ set number
 
 " Ctrl-p settings
 " Set no max file limit
-let g:ctrlp_max_files = 0
+" let g:ctrlp_max_files = 0
 " Search from current directory instead of project root
-let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_working_path_mode = 0
 
 " Ignore these directories
 set wildignore+=*/node_modules/**
@@ -191,6 +193,11 @@ let NERDTreeShowHidden=1
 augroup FiletypeGroup
     autocmd!
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.hbs set filetype=handlebars
 augroup END
 
 " subset of linters to run
@@ -267,7 +274,7 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
 " AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
@@ -331,3 +338,105 @@ endif
 "//////////////// Diminactive ////////////////
 let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix', 'help']
 let g:diminactive_enable_focus = 1
+
+"///////////////// FZF /////////////////////
+" fzf buffers
+"
+map <c-p> :FZF<CR>
+let s:fzf_buffers = []
+
+function! FzfBufEntered()
+  " move the current buffer to the top of the list
+  let l:name = resolve(expand("<afile>"))
+  if name != "" && name !~ "NERD_tree_.*"
+    let l:i = index(s:fzf_buffers, name)
+    if i != -1
+      call remove(s:fzf_buffers, i)
+    endif
+    let s:fzf_buffers = insert(s:fzf_buffers, name)
+  endif
+endfunction
+
+function! FzfBufDeleted()
+  " remove the buffer being deleted from the list
+  let l:name = resolve(expand("<afile>"))
+  if name != ""
+    let l:idx = index(s:fzf_buffers, name)
+    if idx != -1
+      call remove(s:fzf_buffers, idx)
+    endif
+  endif
+endfunction
+
+augroup fzfbuf
+  autocmd!
+  autocmd BufAdd,BufEnter * call FzfBufEntered()
+  autocmd BufDelete * call FzfBufDeleted()
+augroup END
+
+command! FZFBuffers call fzf#run({
+  \'source': s:fzf_buffers,
+  \'sink' : 'e ',
+  \'options' : '-m',
+  \'tmux_height' : 8,
+  \})
+
+" fzf search lines
+function! s:line_handler(l)
+  let keys = split(a:l, ':\t')
+  exec 'buf' keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+
+function! s:buffer_lines()
+  let res = []
+  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+  endfor
+  return res
+endfunction
+
+command! FZFLines call fzf#run({
+\   'source':  <sid>buffer_lines(),
+\   'sink':    function('<sid>line_handler'),
+\   'options': '--extended --nth=3..',
+\   'down':    '60%'
+\})
+
+" fzf ag
+function! s:ag_to_qf(line)
+  let parts = split(a:line, ':')
+  return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
+        \ 'text': join(parts[3:], ':')}
+endfunction
+
+function! s:ag_handler(lines)
+  if len(a:lines) < 2 | return | endif
+
+  let cmd = get({'ctrl-x': 'split',
+               \ 'ctrl-v': 'vertical split',
+               \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
+  let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
+
+  let first = list[0]
+  execute cmd escape(first.filename, ' %#\')
+  execute first.lnum
+  execute 'normal!' first.col.'|zz'
+
+  if len(list) > 1
+    call setqflist(list)
+    copen
+    wincmd p
+  endif
+endfunction
+
+command! -nargs=* Ag call fzf#run({
+\ 'source':  printf('ag git ls-files --nogroup --column --color --smart-case --exclude-standard --others --cached "%s"',
+\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
+\ 'sink*':    function('<sid>ag_handler'),
+\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x '.
+\            '--multi --bind ctrl-a:select-all,ctrl-d:deselect-all '.
+\            '--color hl:68,hl+:110',
+\ 'down':    '100%'
+\ })
