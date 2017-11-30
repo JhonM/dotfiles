@@ -165,7 +165,7 @@ augroup FiletypeGroup
 augroup END
 
 " subset of linters to run
-let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'] }
+let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'], 'scss': ['scss', 'sass'], 'vim': ['vim'] }
 let g:ale_linter_aliases = {'jsx': 'css'}
 
 " :ALEFix will try and fix your JS code with ESLint.
@@ -216,6 +216,7 @@ endif
 "//////////////// Diminactive ////////////////
 let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix', 'help']
 let g:diminactive_enable_focus = 1
+let g:diminactive_use_syntax = 1
 
 "///////////////// FZF /////////////////////
 " fzf buffers
