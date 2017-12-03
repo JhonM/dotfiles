@@ -21,6 +21,7 @@ set mouse=a
 set scrolloff=3
 set autoread
 " set tabstop=2 shiftwidth=2 expandtab
+set number relativenumber
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 set statusline+=%F
 
@@ -38,23 +39,6 @@ set termguicolors
 " swap files dest
 set dir=/tmp
 
-" ----------------------------------------------------------------------------
-"  UI
-" ----------------------------------------------------------------------------
-
-set ruler                  " show the cursor position all the time
-set noshowcmd              " don't display incomplete commands
-set nolazyredraw           " turn off lazy redraw
-set number relativenumber         " relative line numbers
-set wildmenu               " turn on wild menu
-set wildmode=list:longest,full
-set ch=2                   " command line height
-set "backspace=2            " allow backspacing over everything in insert mode
-set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
-set shortmess=filtIoOA     " shorten messages
-set report=0               " tell us about changes
-set nostartofline          " don't jump to the start of line when scrolling
-"
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
