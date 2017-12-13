@@ -21,7 +21,8 @@ set mouse=a
 set scrolloff=3
 set autoread
 " set tabstop=2 shiftwidth=2 expandtab
-set number relativenumber
+set number
+set relativenumber
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 set statusline+=%F
 
