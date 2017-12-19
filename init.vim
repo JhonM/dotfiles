@@ -110,6 +110,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'w0rp/ale'
 Plug 'mhartington/oceanic-next'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()
 
@@ -219,10 +220,14 @@ let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix
 let g:diminactive_enable_focus = 1
 let g:diminactive_use_syntax = 1
 
-"///////////////// FZF /////////////////////
+"///////////////// mustache handlebars /////////////////////
+let g:mustache_abbreviations = 0
+
+"///////////////// fzf /////////////////////
 " fzf buffers
 "
 map <c-p> :FZF<CR>
+map <c-\> :FZFBuffers<CR>
 let s:fzf_buffers = []
 
 function! FzfBufEntered()
