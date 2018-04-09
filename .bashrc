@@ -8,5 +8,5 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUPSTREAM='auto'
 
 # set editor for tmuxinator
-export EDITOR='vim'
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export EDITOR='nvim'
+# export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'

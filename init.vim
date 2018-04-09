@@ -23,7 +23,9 @@ set autoread
 " set tabstop=2 shiftwidth=2 expandtab
 set number
 set relativenumber
+
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+
 set statusline+=%F
 
 let g:indent_guides_auto_colors = 0
@@ -111,6 +113,8 @@ Plug 'w0rp/ale'
 Plug 'mhartington/oceanic-next'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'matze/vim-move'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
@@ -216,6 +220,8 @@ if has("persistent_undo")
     set undofile
 endif
 "//////////////// Diminactive ////////////////
+set cc=80
+
 let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix', 'help']
 let g:diminactive_enable_focus = 1
 let g:diminactive_use_syntax = 1
@@ -286,7 +292,7 @@ command! FZFLines call fzf#run({
 \   'source':  <sid>buffer_lines(),
 \   'sink':    function('<sid>line_handler'),
 \   'options': '--extended --nth=3..',
-\   'down':    '60%'
+\   'down':    '70%'
 \})
 
 " fzf ag
@@ -326,3 +332,11 @@ command! -nargs=* Ag call fzf#run({
 \ 'down':    '100%'
 \ })
 
+" tmux navigator
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
