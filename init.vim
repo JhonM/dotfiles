@@ -113,8 +113,8 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'matze/vim-move'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'othree/yajs.vim'
-" Plug 'othree/html5.vim'
+Plug 'othree/yajs.vim'
+Plug 'othree/html5.vim'
 " Plug 'sheerun/vim-polyglot'
 
 call plug#end()
