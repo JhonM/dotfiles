@@ -4,13 +4,19 @@
 filetype off                  " required
 
 " Normal settings
-colorscheme nova
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" Theme
+syntax enable
+colorscheme OceanicNext
+
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
-set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
-" set term=xterm-256color
 set termencoding=utf-8
 set runtimepath^=~/.fzf
 set backspace=indent,eol,start
@@ -35,10 +41,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 " Use deoplete
 let g:deoplete#enable_at_startup = 1
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
-set termguicolors
-
+"
 " swap files dest
 set dir=/tmp
 
@@ -61,7 +64,7 @@ Plug 'powerline/fonts'
 Plug 'bling/vim-bufferline'
 Plug 'easymotion/vim-easymotion'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
 Plug 'mbbill/undotree'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/restore_view.vim'
@@ -80,20 +83,15 @@ Plug 'mattn/gist-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
-" Plug 'Shougo/neocomplete.vim.git'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim'
-
 Plug 'honza/vim-snippets'
 Plug 'spf13/PIV'
 Plug 'klen/python-mode'
 Plug 'yssource/python.vim'
 Plug 'elzr/vim-json'
 Plug 'groenewege/vim-less'
-Plug 'pangloss/vim-javascript'
-Plug 'briancollins/vim-jst'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'sangwook/vim-coloresque'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-markdown'
@@ -105,7 +103,7 @@ Plug 'mxw/vim-jsx'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'dkprice/vim-easygrep'
-Plug 'trevordmiller/nova-vim'
+" Plug 'trevordmiller/nova-vim'
 Plug 'Lokaltog/powerline'
 Plug 'blueyed/vim-diminactive'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -115,6 +113,9 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'matze/vim-move'
 Plug 'christoomey/vim-tmux-navigator'
+" Plug 'othree/yajs.vim'
+" Plug 'othree/html5.vim'
+" Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -171,7 +172,7 @@ augroup FiletypeGroup
 augroup END
 
 " subset of linters to run
-let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'], 'scss': ['scss', 'sass'], 'vim': ['vim'] }
+let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'], 'scss': ['stylelint'], 'vim': ['vim'] }
 let g:ale_linter_aliases = {'jsx': 'css'}
 
 " :ALEFix will try and fix your JS code with ESLint.
@@ -208,7 +209,7 @@ let g:pymode_rope_autoimport = 0
 let g:pymode_rope = 0
 
 "//////////////// Airline ////////////////
-let g:airline_theme='base16'
+let g:airline_theme='oceanicnext'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 " let g:airline#extensions#tabline#left_sep = ' '
@@ -225,6 +226,7 @@ set cc=80
 let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix', 'help']
 let g:diminactive_enable_focus = 1
 let g:diminactive_use_syntax = 1
+let g:diminactive_use_colorcolumn = 0
 
 "///////////////// mustache handlebars /////////////////////
 let g:mustache_abbreviations = 0
