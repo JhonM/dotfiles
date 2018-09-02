@@ -109,18 +109,26 @@ Plug 'blueyed/vim-diminactive'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'w0rp/ale'
 Plug 'mhartington/oceanic-next'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'matze/vim-move'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'othree/yajs.vim'
 Plug 'othree/html5.vim'
-" Plug 'sheerun/vim-polyglot'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
+Plug 'iamcco/markdown-preview.vim'
 
 call plug#end()
 
 " /////////// Deoplete //////////////////
 " let g:deoplete#enable_at_startup = 1
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
+" inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup()."\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
 
 " CTRL-SHIFT-Right is next tab
 noremap <C-S-Right> :<C-U>bnext<CR>
@@ -172,17 +180,16 @@ augroup FiletypeGroup
 augroup END
 
 " subset of linters to run
-let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'], 'scss': ['stylelint'], 'vim': ['vim'] }
+let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'], 'scss': ['prettier'], 'vim': ['vim'], 'bash': ['language-server', 'shellcheck'] }
 let g:ale_linter_aliases = {'jsx': 'css'}
 
 " :ALEFix will try and fix your JS code with ESLint.
-"let g:ale_fixers = {
-"\   'javascript': ['eslint'],
-"\}
+let g:ale_fixers = {'javascript': ['prettier'], 'scss': ['prettier'], 'handlebars': ['ember-template-lint']}
+" let g:ale_fixers['javascript'] = ['prettier']
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
-"let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 
 let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
