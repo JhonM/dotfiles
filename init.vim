@@ -29,6 +29,8 @@ set autoread
 " set tabstop=2 shiftwidth=2 expandtab
 set number
 set relativenumber
+set lazyredraw
+set cursorline!
 
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
@@ -44,6 +46,9 @@ let g:deoplete#enable_at_startup = 1
 "
 " swap files dest
 set dir=/tmp
+
+" vim-airline
+set hid
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -95,7 +100,7 @@ Plug 'groenewege/vim-less'
 Plug 'sangwook/vim-coloresque'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-markdown'
-Plug 'spf13/vim-preview'
+" Plug 'spf13/vim-preview'
 Plug 'cespare/vim-toml'
 Plug 'saltstack/salt-vim'
 Plug 'joukevandermaas/vim-ember-hbs'
@@ -118,6 +123,7 @@ Plug 'othree/html5.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'iamcco/markdown-preview.vim'
+Plug 'skywind3000/vim-preview'
 
 call plug#end()
 
@@ -174,10 +180,10 @@ augroup FiletypeGroup
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.hbs set filetype=handlebars
-augroup END
+" augroup FiletypeGroup
+"     autocmd!
+"     au BufNewFile,BufRead *.hbs set filetype=handlebars
+" augroup END
 
 " subset of linters to run
 let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'], 'scss': ['prettier'], 'vim': ['vim'], 'bash': ['language-server', 'shellcheck'] }
@@ -236,7 +242,7 @@ let g:diminactive_use_syntax = 1
 let g:diminactive_use_colorcolumn = 0
 
 "///////////////// mustache handlebars /////////////////////
-let g:mustache_abbreviations = 0
+let g:mustache_abbreviations = 1
 
 "///////////////// fzf /////////////////////
 " fzf buffers
