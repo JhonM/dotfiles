@@ -4,7 +4,6 @@
 filetype off                  " required
 
 " Normal settings
-colorscheme nova
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
@@ -37,6 +36,15 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:deoplete#enable_at_startup = 1
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
+
+" Or if you have Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" Theme
+syntax enable
+colorscheme OceanicNext
 set termguicolors
 
 " swap files dest
