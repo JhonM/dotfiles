@@ -4,7 +4,6 @@
 filetype off                  " required
 
 " Normal settings
-colorscheme nova
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
@@ -46,7 +45,6 @@ endif
 " Theme
 syntax enable
 colorscheme OceanicNext
-set termguicolors
 
 " swap files dest
 set dir=/tmp
