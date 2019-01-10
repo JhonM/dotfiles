@@ -7,9 +7,7 @@ filetype off                  " required
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
-set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
-" set term=xterm-256color
 set termencoding=utf-8
 set runtimepath^=~/.fzf
 set backspace=indent,eol,start
@@ -22,6 +20,8 @@ set autoread
 " set tabstop=2 shiftwidth=2 expandtab
 set number
 set relativenumber
+set lazyredraw
+set cursorline!
 
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
@@ -45,10 +45,12 @@ endif
 " Theme
 syntax enable
 colorscheme OceanicNext
-set termguicolors
 
 " swap files dest
 set dir=/tmp
+
+" vim-airline
+set hid
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -69,7 +71,7 @@ Plug 'powerline/fonts'
 Plug 'bling/vim-bufferline'
 Plug 'easymotion/vim-easymotion'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
 Plug 'mbbill/undotree'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/restore_view.vim'
@@ -88,24 +90,19 @@ Plug 'mattn/gist-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
-" Plug 'Shougo/neocomplete.vim.git'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim'
-
 Plug 'honza/vim-snippets'
 Plug 'spf13/PIV'
 Plug 'klen/python-mode'
 Plug 'yssource/python.vim'
 Plug 'elzr/vim-json'
 Plug 'groenewege/vim-less'
-Plug 'pangloss/vim-javascript'
-Plug 'briancollins/vim-jst'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'sangwook/vim-coloresque'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-markdown'
-Plug 'spf13/vim-preview'
+" Plug 'spf13/vim-preview'
 Plug 'cespare/vim-toml'
 Plug 'saltstack/salt-vim'
 Plug 'joukevandermaas/vim-ember-hbs'
@@ -113,21 +110,46 @@ Plug 'mxw/vim-jsx'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'dkprice/vim-easygrep'
-Plug 'trevordmiller/nova-vim'
+" Plug 'trevordmiller/nova-vim'
 Plug 'Lokaltog/powerline'
 Plug 'blueyed/vim-diminactive'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'w0rp/ale'
 Plug 'mhartington/oceanic-next'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'matze/vim-move'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'othree/yajs.vim'
+Plug 'othree/html5.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'skywind3000/vim-preview'
 
 call plug#end()
 
 " /////////// Deoplete //////////////////
 " let g:deoplete#enable_at_startup = 1
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup()."\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
+
+" Use smartcase.
+call deoplete#custom#option('smart_case', v:true)
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#close_popup() . "\<CR>"
+endfunction
 
 " CTRL-SHIFT-Right is next tab
 noremap <C-S-Right> :<C-U>bnext<CR>
@@ -173,23 +195,22 @@ augroup FiletypeGroup
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.hbs set filetype=handlebars
-augroup END
+" augroup FiletypeGroup
+"     autocmd!
+"     au BufNewFile,BufRead *.hbs set filetype=handlebars
+" augroup END
 
 " subset of linters to run
-let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'], 'scss': ['scss', 'sass'], 'vim': ['vim'] }
+let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'], 'scss': ['prettier'], 'vim': ['vim'], 'bash': ['language-server', 'shellcheck'] }
 let g:ale_linter_aliases = {'jsx': 'css'}
 
 " :ALEFix will try and fix your JS code with ESLint.
-"let g:ale_fixers = {
-"\   'javascript': ['eslint'],
-"\}
+let g:ale_fixers = {'javascript': ['prettier'], 'scss': ['prettier'], 'handlebars': ['ember-template-lint']}
+" let g:ale_fixers['javascript'] = ['prettier']
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
-"let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 
 let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
@@ -216,7 +237,7 @@ let g:pymode_rope_autoimport = 0
 let g:pymode_rope = 0
 
 "//////////////// Airline ////////////////
-let g:airline_theme='base16'
+let g:airline_theme='oceanicnext'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 " let g:airline#extensions#tabline#left_sep = ' '
@@ -233,9 +254,10 @@ set cc=80
 let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix', 'help']
 let g:diminactive_enable_focus = 1
 let g:diminactive_use_syntax = 1
+let g:diminactive_use_colorcolumn = 0
 
 "///////////////// mustache handlebars /////////////////////
-let g:mustache_abbreviations = 0
+let g:mustache_abbreviations = 1
 
 "///////////////// fzf /////////////////////
 " fzf buffers
