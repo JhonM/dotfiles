@@ -2,7 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " Normal settings
-colorscheme nova
+colorscheme OceanicNext
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
@@ -344,6 +344,7 @@ let g:diminactive_enable_focus = 1
 "
 map <c-p> :FZF<CR>
 let s:fzf_buffers = []
+set rtp+=/usr/local/opt/fzf
 
 function! FzfBufEntered()
   " move the current buffer to the top of the list

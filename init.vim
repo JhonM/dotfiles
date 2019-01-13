@@ -35,7 +35,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 " Use deoplete
 let g:deoplete#enable_at_startup = 1
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Or if you have Neovim >= 0.1.5
 if (has("termguicolors"))
@@ -63,6 +63,7 @@ Plug 'tpope/vim-repeat'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/sessionman.vim'
 Plug 'vim-airline/vim-airline'
@@ -93,6 +94,7 @@ Plug 'godlygeek/tabular'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/context_filetype.vim'
 Plug 'honza/vim-snippets'
 Plug 'spf13/PIV'
 Plug 'klen/python-mode'
