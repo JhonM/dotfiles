@@ -128,6 +128,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'skywind3000/vim-preview'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
