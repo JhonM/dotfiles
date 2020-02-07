@@ -1,7 +1,6 @@
 
 " call deoplete#enable()
-"set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype on                  " required
 
 " Normal settings
 set guifont=Inconsolata\ for\ Powerline:h15
@@ -33,7 +32,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
 " Use deoplete
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -64,7 +63,7 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/sessionman.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -91,9 +90,9 @@ Plug 'mattn/gist-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-commentary'
 Plug 'godlygeek/tabular'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/context_filetype.vim'
 Plug 'honza/vim-snippets'
 Plug 'spf13/PIV'
@@ -114,7 +113,8 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'dkprice/vim-easygrep'
 " Plug 'trevordmiller/nova-vim'
 Plug 'Lokaltog/powerline'
-Plug 'blueyed/vim-diminactive'
+" Plug 'blueyed/vim-diminactive'
+Plug 'TaDaa/vimade'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'w0rp/ale'
 Plug 'mhartington/oceanic-next'
@@ -129,6 +129,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'skywind3000/vim-preview'
 Plug 'junegunn/goyo.vim'
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+Plug 'tpope/vim-obsession'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'majutsushi/tagbar'
+Plug 'christoomey/vim-sort-motion'
+Plug 'christoomey/vim-system-copy'
+" Plug 'mg979/vim-visual-multi'
 
 call plug#end()
 
@@ -136,23 +143,23 @@ call plug#end()
 " let g:deoplete#enable_at_startup = 1
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup()."\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
+" inoremap <silent><expr><CR> pumvisible() ? deoplete#mappings#close_popup()."\<Plug>(neosnippet_expand_or_jump)" : "\<CR>"
 
 " Use smartcase.
-call deoplete#custom#option('smart_case', v:true)
+" call deoplete#custom#option('smart_case', v:true)
 
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return deoplete#close_popup() . "\<CR>"
-endfunction
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function() abort
+"   return deoplete#close_popup() . "\<CR>"
+" endfunction
 
 " CTRL-SHIFT-Right is next tab
 noremap <C-S-Right> :<C-U>bnext<CR>
@@ -204,29 +211,33 @@ augroup END
 " augroup END
 
 " subset of linters to run
-let g:ale_linters = { 'jsx': ['stylelint', 'eslint'],  'javascript': ['eslint'], 'handlebars': ['ember-template-lint'], 'scss': ['prettier'], 'vim': ['vim'], 'bash': ['language-server', 'shellcheck'] }
+let g:ale_linters = { 'jsx': ['stylelint', 'eslint', 'prettier'],  'javascript': ['stylelint', 'eslint', 'prettier'], 'scss': ['prettier'], 'vim': ['vim'], 'bash': ['language-server', 'shellcheck'], 'handlebars': ['prettier', 'eslint'] }
 let g:ale_linter_aliases = {'jsx': 'css'}
 
 " :ALEFix will try and fix your JS code with ESLint.
-let g:ale_fixers = {'javascript': ['prettier'], 'scss': ['prettier'], 'handlebars': ['ember-template-lint']}
+let g:ale_fixers = {'javascript': ['stylelint', 'prettier', 'eslint'], 'scss': ['prettier'], 'handlebars': ['prettier', 'eslint']}
 " let g:ale_fixers['javascript'] = ['prettier']
 
 " Set this setting in vimrc if you want to fix files automatically on save.
 " This is off by default.
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 
 let g:ale_completion_enabled = 1
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+" let g:ale_sign_error = '>>'
+" let g:ale_sign_warning = '--'
+let g:ale_warn_about_trailing_whitespace = 1
 
 let g:ale_open_list = 1
 " Set this if you want to.
 " This can be useful if you are combining ALE with
 " some other plugin which sets quickfix errors, etc.
-let g:ale_keep_list_window_open = 1
+let g:ale_keep_list_window_open = 0
 let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
+let g:ale_set_quickfix = 1
+
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
 
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
@@ -254,10 +265,10 @@ endif
 "//////////////// Diminactive ////////////////
 set cc=80
 
-let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix', 'help']
-let g:diminactive_enable_focus = 1
-let g:diminactive_use_syntax = 1
-let g:diminactive_use_colorcolumn = 0
+" let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix', 'help']
+" let g:diminactive_enable_focus = 1
+" let g:diminactive_use_syntax = 1
+" let g:diminactive_use_colorcolumn = 0
 
 "///////////////// mustache handlebars /////////////////////
 let g:mustache_abbreviations = 1
@@ -302,7 +313,7 @@ command! FZFBuffers call fzf#run({
   \'source': s:fzf_buffers,
   \'sink' : 'e ',
   \'options' : '-m',
-  \'tmux_height' : 8,
+  \'tmux_height' : 50,
   \})
 
 " fzf search lines
@@ -373,3 +384,142 @@ nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
 nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
 nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
 nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
+
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+
+" Add diagnostic info for https://github.com/itchyny/lightline.vim
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status'
+      \ },
+      \ }
+
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-css',
+  \ 'coc-json',
+  \ 'coc-html',
+  \ 'coc-vimlsp',
+  \ 'coc-highlight',
+  \ 'coc-ember'
+\ ]
+
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Show TagbarToggle
+nmap <F8> :TagbarToggle<CR>
