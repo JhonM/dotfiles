@@ -1,4 +1,4 @@
-
+" cSpell:disable
 " call deoplete#enable()
 filetype on                  " required
 
@@ -129,8 +129,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'skywind3000/vim-preview'
 Plug 'junegunn/goyo.vim'
-Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'tpope/vim-obsession'
+" Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-sort-motion'
@@ -499,9 +499,7 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-vimlsp',
   \ 'coc-highlight',
-  \ 'coc-ember'
 \ ]
-
 
 " Using CocList
 " Show all diagnostics
@@ -523,3 +521,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Show TagbarToggle
 nmap <F8> :TagbarToggle<CR>
+
+" Configuration custom vim mapping coc-explorer
+:nmap <space>e :CocCommand explorer<CR>
