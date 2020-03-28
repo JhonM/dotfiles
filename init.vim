@@ -97,6 +97,7 @@ Plug 'Shougo/neosnippet-snippets'
 " Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/context_filetype.vim'
 Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 " Plug 'spf13/PIV'
 Plug 'klen/python-mode'
 Plug 'yssource/python.vim'
@@ -295,7 +296,7 @@ set cc=80
 let g:mustache_abbreviations = 1
 
 "///////////////// fzf /////////////////////
-let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
+let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=0,1'
 " fzf buffers jfjf
 "
 map <c-p> :Files<CR>
