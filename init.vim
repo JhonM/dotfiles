@@ -142,8 +142,8 @@ Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-system-copy'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx']}
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install','for': ['javascript', 'javascript.jsx']  }
-Plug 'mhinz/vim-startify'
 Plug 'ncm2/float-preview.nvim'
+Plug 'voldikss/vim-translator'
 " Plug '907th/vim-auto-save'
 " Plug 'mg979/vim-visual-multi'
 
@@ -584,4 +584,4 @@ let g:deoplete#sources#ternjs#docs = 1
 
 let g:deoplete#sources = {}
 let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs']
-set completeopt-=preview
+" set completeopt-=preview
