@@ -1,6 +1,6 @@
-
 call plug#begin('~/.local/share/nvim/plugged')
-
+" set runtimepath=~/.dotfiles/vim/config/plugins
+" runtime! **/plug.vim
 " Plug 'scrooloose/nerdtree' V
 " Plug 'tpope/vim-surround' V
 " Plug 'tpope/vim-repeat' V
@@ -91,9 +91,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'voldikss/vim-translator'
 " " Plug '907th/vim-auto-save'
 " " Plug 'mg979/vim-visual-multi'
-set runtimepath=~/.dotfiles/vim/config/plugins
-runtime! **/plug.vim
+
+
+source ~/.dotfiles/vim/config/plugins/nerdtree/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-surround/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-repeat/plug.vim
+source ~/.dotfiles/vim/config/plugins/conflict-marker/plug.vim
+source ~/.dotfiles/vim/config/plugins/fzf/plug.vim
+source ~/.dotfiles/vim/config/plugins/fzf-vim/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-airline/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-airline-themes/plug.vim
 
 call plug#end()
-
-

@@ -1,0 +1,2 @@
+" vim-airline
+set hid

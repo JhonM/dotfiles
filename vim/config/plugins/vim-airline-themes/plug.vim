@@ -1,1 +1,1 @@
-Plug 'vim-airline/vim-airline-themes' V
+Plug 'vim-airline/vim-airline-themes'

@@ -1,6 +1,5 @@
 " cSpell:disable
-" call deoplete#enable()
-filetype on                  " required
+filetype on
 
 " Normal settings
 set guifont=Inconsolata\ for\ Powerline:h15
@@ -18,6 +17,7 @@ set scrolloff=3
 set autoread
 " set tabstop=2 shiftwidth=2 expandtab
 set number
+set hlsearch
 set relativenumber
 set lazyredraw
 set cursorline!
@@ -30,9 +30,6 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
-
-" Use deoplete
-" let g:deoplete#enable_at_startup = 1
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -48,9 +45,21 @@ colorscheme OceanicNext
 " swap files dest
 set dir=/tmp
 
-" vim-airline
-set hid
-
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
+
+" CTRL-SHIFT-Right is next tab
+noremap <C-S-Right> :<C-U>bnext<CR>
+inoremap <C-S-Right> <C-\><C-N>:bnext<CR>
+cnoremap <C-S-Right> <C-C>:bnext<CR>
+" CTRL-SHIFT-Left is previous tab
+noremap <C-S-Left> :<C-U>bprevious<CR>
+inoremap <C-S-Left> <C-\><C-N>:bprevious<CR>
+cnoremap <C-S-Left> <C-C>:bprevious<CR>
+
+" Ignore these directories
+set wildignore+=*/node_modules/**
+set wildignore+=*/bower_components/**
+set wildignore+=*/.git/**
+set wildignore+=*/tmp/**
