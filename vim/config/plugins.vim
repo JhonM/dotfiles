@@ -12,29 +12,29 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'vim-scripts/sessionman.vim' X
 " Plug 'vim-airline/vim-airline' V
 " Plug 'vim-airline/vim-airline-themes' V
-" Plug 'powerline/fonts'
-" Plug 'bling/vim-bufferline'
-" Plug 'easymotion/vim-easymotion'
-" Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'powerline/fonts' V
+" Plug 'bling/vim-bufferline' X
+" Plug 'easymotion/vim-easymotion' X
+" Plug 'jistr/vim-nerdtree-tabs' X
 " " Plug 'flazz/vim-colorschemes'
-" Plug 'mbbill/undotree'
-" Plug 'nathanaelkane/vim-indent-guides'
-" Plug 'vim-scripts/restore_view.vim'
-" Plug 'mhinz/vim-signify'
-" Plug 'osyo-manga/vim-over'
-" Plug 'kana/vim-textobj-user'
-" Plug 'kana/vim-textobj-indent'
-" Plug 'gcmt/wildfire.vim'
-" Plug 'reedes/vim-litecorrect'
-" Plug 'reedes/vim-textobj-sentence'
-" Plug 'reedes/vim-textobj-quote'
-" Plug 'reedes/vim-wordy'
-" Plug 'tpope/vim-fugitive'
-" Plug 'mattn/webapi-vim'
-" Plug 'mattn/gist-vim'
-" Plug 'scrooloose/nerdcommenter'
-" Plug 'tpope/vim-commentary'
-" Plug 'godlygeek/tabular'
+" Plug 'mbbill/undotree' V
+" Plug 'nathanaelkane/vim-indent-guides' V
+" Plug 'vim-scripts/restore_view.vim' V
+" Plug 'mhinz/vim-signify' V
+" Plug 'osyo-manga/vim-over' X
+" Plug 'kana/vim-textobj-user' X
+" Plug 'kana/vim-textobj-indent' X
+" Plug 'gcmt/wildfire.vim' X
+" Plug 'reedes/vim-litecorrect' X
+" Plug 'reedes/vim-textobj-sentence' X
+" Plug 'reedes/vim-textobj-quote' X
+" Plug 'reedes/vim-wordy' X
+" Plug 'tpope/vim-fugitive' x
+" Plug 'mattn/webapi-vim' X
+" Plug 'mattn/gist-vim' X
+" Plug 'scrooloose/nerdcommenter' X
+" Plug 'tpope/vim-commentary' V
+" Plug 'godlygeek/tabular' X
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'wokalski/autocomplete-flow'
 " Plug 'Shougo/neosnippet'
@@ -101,5 +101,12 @@ source ~/.dotfiles/vim/config/plugins/fzf/plug.vim
 source ~/.dotfiles/vim/config/plugins/fzf-vim/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-airline/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-airline-themes/plug.vim
+source ~/.dotfiles/vim/config/plugins/powerline-fonts/plug.vim
+source ~/.dotfiles/vim/config/plugins/undotree/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-indent-guides/plug.vim
+source ~/.dotfiles/vim/config/plugins/restore-view/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-signify/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-fugitive/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-commentary/plug.vim
 
 call plug#end()
