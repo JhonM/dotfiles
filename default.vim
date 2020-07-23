@@ -39,19 +39,6 @@ endfunction
 " Search from current directory instead of project root
 " let g:ctrlp_working_path_mode = 0
 
-" Alias for Bdelete delete buffer
-:nnoremap <Leader>q :Bdelete<CR>
-
-"//////////////// ALE ////////////////
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-augroup END
-
-" augroup FiletypeGroup
-"     autocmd!
-"     au BufNewFile,BufRead *.hbs set filetype=handlebars
-" augroup END
 
 " subset of linters to run
 let g:ale_linters = { 'jsx': ['stylelint', 'eslint', 'prettier'],  'javascript': ['stylelint', 'eslint', 'prettier'], 'scss': ['prettier'], 'vim': ['vim'], 'bash': ['language-server', 'shellcheck'], 'handlebars': ['prettier', 'eslint'] }

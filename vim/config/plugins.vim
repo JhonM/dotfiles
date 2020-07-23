@@ -5,7 +5,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'tpope/vim-surround' V
 " Plug 'tpope/vim-repeat' V
 " Plug 'rhysd/conflict-marker.vim' V
-" Plug 'jiangmiao/auto-pairs' X
+" Plug 'jiangmiao/auto-pairs' V
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } V
 " Plug 'junegunn/fzf.vim' V
 " " Plug 'terryma/vim-multiple-cursors'
@@ -97,6 +97,7 @@ source ~/.dotfiles/vim/config/plugins/nerdtree/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-surround/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-repeat/plug.vim
 source ~/.dotfiles/vim/config/plugins/conflict-marker/plug.vim
+source ~/.dotfiles/vim/config/plugins/auto-pairs/plug.vim
 source ~/.dotfiles/vim/config/plugins/fzf/plug.vim
 source ~/.dotfiles/vim/config/plugins/fzf-vim/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-airline/plug.vim

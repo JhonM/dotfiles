@@ -1,6 +1,7 @@
 " cSpell:disable
-filetype on
+filetype off
 
+filetype plugin indent on    " required
 " Normal settings
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
@@ -59,3 +60,17 @@ set wildignore+=*/node_modules/**
 set wildignore+=*/bower_components/**
 set wildignore+=*/.git/**
 set wildignore+=*/tmp/**
+
+" Alias for Bdelete delete buffer
+:nnoremap <Leader>q :Bdelete<CR>
+
+"//////////////// ALE ////////////////
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+
+" augroup FiletypeGroup
+"     autocmd!
+"     au BufNewFile,BufRead *.hbs set filetype=handlebars
+" augroup END
