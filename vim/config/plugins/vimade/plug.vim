@@ -1,0 +1,1 @@
+Plug 'TaDaa/vimade'

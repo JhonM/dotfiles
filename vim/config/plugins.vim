@@ -64,17 +64,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 " " Plug 'blueyed/vim-diminactive'
 " Plug 'TaDaa/vimade'
 " Plug 'tmux-plugins/vim-tmux-focus-events'
-" Plug 'w0rp/ale'
+" Plug 'w0rp/ale' V
 " Plug 'mhartington/oceanic-next' V
 " " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight' V
 " Plug 'matze/vim-move'
 " Plug 'christoomey/vim-tmux-navigator'
-" Plug 'othree/yajs.vim'
+" Plug 'othree/yajs.vim' X
 " Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx']  }
-" " Plug 'othree/html5.vim'
+" " Plug 'othree/html5.vim' X
 " Plug 'ryanoasis/vim-devicons'
-" Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot' V
 " Plug 'iamcco/markdown-preview.vim'
 " " Plug 'Skywind3000/vim-preview'
 " Plug 'junegunn/goyo.vim'
@@ -118,5 +118,8 @@ source ~/.dotfiles/vim/config/plugins/tern-for-vim/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-system-copy/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-polyglot/plug.vim
 source ~/.dotfiles/vim/config/plugins/ale/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-nerdtree-syntax-highlight/plug.vim
+source ~/.dotfiles/vim/config/plugins/vimade/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-devicons/plug.vim
 
 call plug#end()

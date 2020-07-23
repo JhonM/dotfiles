@@ -5,3 +5,4 @@ source ~/.dotfiles/vim/config/plugins/undotree/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-indent-guides/config.vim
 source ~/.dotfiles/vim/config/plugins/ncm2/config.vim
 source ~/.dotfiles/vim/config/plugins/ale/config.vim
+source ~/.dotfiles/vim/config/plugins/vimade/config.vim
