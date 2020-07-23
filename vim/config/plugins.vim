@@ -108,5 +108,6 @@ source ~/.dotfiles/vim/config/plugins/restore-view/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-signify/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-fugitive/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-commentary/plug.vim
+source ~/.dotfiles/vim/config/plugins/oceanic-next/plug.vim
 
 call plug#end()
