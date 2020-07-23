@@ -5,4 +5,3 @@ endif
 " Theme
 syntax enable
 colorscheme OceanicNext
-set t_ut=

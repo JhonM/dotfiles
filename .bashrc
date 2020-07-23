@@ -9,4 +9,3 @@ export GIT_PS1_SHOWUPSTREAM='auto'
 
 # set editor for tmuxinator
 export EDITOR='nvim'
-# export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
