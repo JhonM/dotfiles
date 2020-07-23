@@ -116,6 +116,7 @@ source ~/.dotfiles/vim/config/plugins/neosnippet-snippets/plug.vim
 source ~/.dotfiles/vim/config/plugins/deoplete-ternjs/plug.vim
 source ~/.dotfiles/vim/config/plugins/tern-for-vim/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-system-copy/plug.vim
-source ~/.dotfiles/vim/config/plugins/vim-polygloT/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-polyglot/plug.vim
+source ~/.dotfiles/vim/config/plugins/ale/plug.vim
 
 call plug#end()
