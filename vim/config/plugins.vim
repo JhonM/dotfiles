@@ -37,8 +37,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'godlygeek/tabular' X
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'wokalski/autocomplete-flow'
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neosnippet' V
+" Plug 'Shougo/neosnippet-snippets' V
 " " Plug 'Shougo/deoplete.nvim'
 " Plug 'Shougo/context_filetype.vim'
 " Plug 'honza/vim-snippets'
@@ -65,7 +65,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Plug 'TaDaa/vimade'
 " Plug 'tmux-plugins/vim-tmux-focus-events'
 " Plug 'w0rp/ale'
-" Plug 'mhartington/oceanic-next'
+" Plug 'mhartington/oceanic-next' V
 " " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Plug 'matze/vim-move'
@@ -84,10 +84,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 " " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'majutsushi/tagbar'
 " Plug 'christoomey/vim-sort-motion'
-" Plug 'christoomey/vim-system-copy'
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx']}
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install','for': ['javascript', 'javascript.jsx']  }
-" Plug 'ncm2/float-preview.nvim'
+" Plug 'christoomey/vim-system-copy' v
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': ['javascript', 'javascript.jsx']} V
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install','for': ['javascript', 'javascript.jsx']  } V
+" Plug 'ncm2/float-preview.nvim' V
 " Plug 'voldikss/vim-translator'
 " " Plug '907th/vim-auto-save'
 " " Plug 'mg979/vim-visual-multi'
@@ -115,5 +115,7 @@ source ~/.dotfiles/vim/config/plugins/neosnippet/plug.vim
 source ~/.dotfiles/vim/config/plugins/neosnippet-snippets/plug.vim
 source ~/.dotfiles/vim/config/plugins/deoplete-ternjs/plug.vim
 source ~/.dotfiles/vim/config/plugins/tern-for-vim/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-system-copy/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-polygloT/plug.vim
 
 call plug#end()
