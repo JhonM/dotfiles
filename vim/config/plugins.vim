@@ -110,5 +110,10 @@ source ~/.dotfiles/vim/config/plugins/vim-signify/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-fugitive/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-commentary/plug.vim
 source ~/.dotfiles/vim/config/plugins/oceanic-next/plug.vim
+source ~/.dotfiles/vim/config/plugins/ncm2/plug.vim
+source ~/.dotfiles/vim/config/plugins/neosnippet/plug.vim
+source ~/.dotfiles/vim/config/plugins/neosnippet-snippets/plug.vim
+source ~/.dotfiles/vim/config/plugins/deoplete-ternjs/plug.vim
+source ~/.dotfiles/vim/config/plugins/tern-for-vim/plug.vim
 
 call plug#end()
