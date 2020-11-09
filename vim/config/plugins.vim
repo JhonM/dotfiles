@@ -117,11 +117,12 @@ source ~/.dotfiles/vim/config/plugins/deoplete-ternjs/plug.vim
 source ~/.dotfiles/vim/config/plugins/tern-for-vim/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-system-copy/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-polyglot/plug.vim
-source ~/.dotfiles/vim/config/plugins/ale/plug.vim
+" source ~/.dotfiles/vim/config/plugins/ale/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-nerdtree-syntax-highlight/plug.vim
 source ~/.dotfiles/vim/config/plugins/vimade/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-devicons/plug.vim
 source ~/.dotfiles/vim/config/plugins/conoline-vim/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-tmux-focus-events/plug.vim
+source ~/.dotfiles/vim/config/plugins/coc/plug.vim
 
 call plug#end()
