@@ -6,6 +6,7 @@ let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-stylelint',
 	\ 'coc-tag',
+	\ 'coc-ember',
 	\ 'coc-tsserver'
 \ ]
 " TextEdit might fail if hidden is not set.
@@ -151,6 +152,9 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+" Format current file with prettier
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
@@ -173,3 +177,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+" PLUGIN SPECIFIC CONFIG
+" PLUGIN >> Coc-explorer
+:nmap <space>e :CocCommand explorer<CR>
