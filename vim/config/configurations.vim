@@ -10,3 +10,4 @@ source ~/.dotfiles/vim/config/plugins/vimade/config.vim
 source ~/.dotfiles/vim/config/plugins/conoline-vim/config.vim
 source ~/.dotfiles/vim/config/plugins/coc/config.vim
 source ~/.dotfiles/vim/config/plugins/lightline/config.vim
+source ~/.dotfiles/vim/config/plugins/markdown-preview/config.vim

@@ -125,5 +125,6 @@ source ~/.dotfiles/vim/config/plugins/conoline-vim/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-tmux-focus-events/plug.vim
 source ~/.dotfiles/vim/config/plugins/coc/plug.vim
 source ~/.dotfiles/vim/config/plugins/lightline/plug.vim
+source ~/.dotfiles/vim/config/plugins/markdown-preview/plug.vim
 
 call plug#end()
