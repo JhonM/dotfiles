@@ -7,7 +7,10 @@ let g:coc_global_extensions = [
 	\ 'coc-stylelint',
 	\ 'coc-tag',
 	\ 'coc-ember',
-	\ 'coc-tsserver'
+	\ 'coc-tsserver',
+	\ 'coc-yaml',
+	\ 'coc-tabnine',
+	\ 'coc-emmet'
 \ ]
 " TextEdit might fail if hidden is not set.
 set hidden
