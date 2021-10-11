@@ -85,6 +85,24 @@ augroup FiletypeGroup
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
+" open new split panes to right and below
+set splitright
+set splitbelow
+
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
+
+"Start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+"Open terminal on <leader>+n
+function! OpenTerminal()
+    split term://zsh
+    resize 10
+endfunction
+
+nnoremap <leader>n :call OpenTerminal() <CR>
+
 " augroup FiletypeGroup
 "     autocmd!
 "     au BufNewFile,BufRead *.hbs set filetype=handlebars
