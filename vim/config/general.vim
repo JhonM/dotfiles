@@ -46,14 +46,29 @@ set dir=/tmp
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 
+" don't remap Arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+noremap <Space> <Nop>
+
+set clipboard+=unnamedplus
+
+let mapleader = "\<space>"
+
+nnoremap <leader>w <C-W>
+nnoremap <leader>bn :bn<cr>
+nnoremap <leader>tn gt
+
 " CTRL-SHIFT-Right is next tab
-noremap <C-S-Right> :<C-U>bnext<CR>
-inoremap <C-S-Right> <C-\><C-N>:bnext<CR>
-cnoremap <C-S-Right> <C-C>:bnext<CR>
+" noremap <C-S-Right> :<C-U>bnext<CR>
+" inoremap <C-S-Right> <C-\><C-N>:bnext<CR>
+" cnoremap <C-S-Right> <C-C>:bnext<CR>
 " CTRL-SHIFT-Left is previous tab
-noremap <C-S-Left> :<C-U>bprevious<CR>
-inoremap <C-S-Left> <C-\><C-N>:bprevious<CR>
-cnoremap <C-S-Left> <C-C>:bprevious<CR>
+" noremap <C-S-Left> :<C-U>bprevious<CR>
+" inoremap <C-S-Left> <C-\><C-N>:bprevious<CR>
+" cnoremap <C-S-Left> <C-C>:bprevious<CR>
 
 " Ignore these directories
 set wildignore+=*/node_modules/**
@@ -62,13 +77,31 @@ set wildignore+=*/.git/**
 set wildignore+=*/tmp/**
 
 " Alias for Bdelete delete buffer
-:nnoremap <Leader>q :Bdelete<CR>
+nnoremap <leader>q :Bdelete<CR>
 
 "//////////////// ALE ////////////////
 augroup FiletypeGroup
     autocmd!
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
+
+" open new split panes to right and below
+set splitright
+set splitbelow
+
+" turn terminal to normal mode with escape
+tnoremap <Esc> <C-\><C-n>
+
+"Start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+"Open terminal on <leader>+n
+function! OpenTerminal()
+    split term://zsh
+    resize 10
+endfunction
+
+nnoremap <leader>n :call OpenTerminal() <CR>
 
 " augroup FiletypeGroup
 "     autocmd!
