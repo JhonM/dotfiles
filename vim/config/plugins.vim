@@ -104,7 +104,7 @@ source ~/.dotfiles/vim/config/plugins/fzf-vim/plug.vim
 " source ~/.dotfiles/vim/config/plugins/vim-airline-themes/plug.vim
 source ~/.dotfiles/vim/config/plugins/powerline-fonts/plug.vim
 source ~/.dotfiles/vim/config/plugins/undotree/plug.vim
-source ~/.dotfiles/vim/config/plugins/vim-indent-guides/plug.vim
+" source ~/.dotfiles/vim/config/plugins/vim-indent-guides/plug.vim
 source ~/.dotfiles/vim/config/plugins/restore-view/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-signify/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-fugitive/plug.vim
@@ -126,5 +126,6 @@ source ~/.dotfiles/vim/config/plugins/vim-tmux-focus-events/plug.vim
 source ~/.dotfiles/vim/config/plugins/coc/plug.vim
 source ~/.dotfiles/vim/config/plugins/lightline/plug.vim
 source ~/.dotfiles/vim/config/plugins/markdown-preview/plug.vim
+source ~/.dotfiles/vim/config/plugins/indent-line/plug.vim
 
 call plug#end()
