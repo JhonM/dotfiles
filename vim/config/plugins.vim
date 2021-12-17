@@ -127,5 +127,6 @@ source ~/.dotfiles/vim/config/plugins/coc/plug.vim
 source ~/.dotfiles/vim/config/plugins/lightline/plug.vim
 source ~/.dotfiles/vim/config/plugins/markdown-preview/plug.vim
 source ~/.dotfiles/vim/config/plugins/indent-line/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-maximizer/plug.vim
 
 call plug#end()
