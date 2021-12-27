@@ -129,5 +129,6 @@ source ~/.dotfiles/vim/config/plugins/markdown-preview/plug.vim
 source ~/.dotfiles/vim/config/plugins/indent-line/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-maximizer/plug.vim
 source ~/.dotfiles/vim/config/plugins/vimspector/plug.vim
+source ~/.dotfiles/vim/config/plugins/dracula/plug.vim
 
 call plug#end()
