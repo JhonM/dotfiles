@@ -14,3 +14,4 @@ source ~/.dotfiles/vim/config/plugins/markdown-preview/config.vim
 source ~/.dotfiles/vim/config/plugins/indent-line/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-maximizer/config.vim
 source ~/.dotfiles/vim/config/plugins/vimspector/config.vim
+source ~/.dotfiles/vim/config/plugins/vim-test/config.vim
