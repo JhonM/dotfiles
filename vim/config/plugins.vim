@@ -142,4 +142,4 @@ endif
 
 " Theme
 syntax enable
-colorscheme dracula
+colorscheme oceanicnext
