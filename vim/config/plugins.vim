@@ -133,3 +133,13 @@ source ~/.dotfiles/vim/config/plugins/dracula/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-test/plug.vim
 
 call plug#end()
+
+
+" Or if you have Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" Theme
+syntax enable
+colorscheme dracula

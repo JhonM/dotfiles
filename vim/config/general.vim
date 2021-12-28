@@ -30,6 +30,7 @@ set statusline+=%F
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+
 " swap files dest
 set dir=/tmp
 
