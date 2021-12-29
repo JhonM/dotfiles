@@ -1,7 +1,20 @@
 "///////////////// fzf /////////////////////
 let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=0,1'
-" fzf buffers jfjf
-"
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
 map <c-p> :Files<CR>
 map <c-\> :Buffers<CR>
 let s:fzf_buffers = []
@@ -102,7 +115,12 @@ command! -nargs=* Ag call fzf#run({
 \ 'down':    '100%'
 \ })
 
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+" See `man fzf-tmux` for available options
+if exists('$TMUX')
+  let g:fzf_layout = { 'tmux': '-p90%,60%' }
+else
+  let g:fzf_layout = { 'window': 'call FloatingFZF()'}
+endif
 
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
