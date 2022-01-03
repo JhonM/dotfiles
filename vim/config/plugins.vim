@@ -113,7 +113,7 @@ source ~/.dotfiles/vim/config/plugins/oceanic-next/plug.vim
 " source ~/.dotfiles/vim/config/plugins/ncm2/plug.vim
 source ~/.dotfiles/vim/config/plugins/neosnippet/plug.vim
 source ~/.dotfiles/vim/config/plugins/neosnippet-snippets/plug.vim
-source ~/.dotfiles/vim/config/plugins/deoplete-ternjs/plug.vim
+" source ~/.dotfiles/vim/config/plugins/deoplete-ternjs/plug.vim
 source ~/.dotfiles/vim/config/plugins/tern-for-vim/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-system-copy/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-polyglot/plug.vim
