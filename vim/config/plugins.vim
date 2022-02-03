@@ -93,7 +93,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " " Plug 'mg979/vim-visual-multi'
 
 
-source ~/.dotfiles/vim/config/plugins/nerdtree/plug.vim
+" source ~/.dotfiles/vim/config/plugins/nerdtree/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-surround/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-repeat/plug.vim
 source ~/.dotfiles/vim/config/plugins/conflict-marker/plug.vim
@@ -118,7 +118,7 @@ source ~/.dotfiles/vim/config/plugins/tern-for-vim/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-system-copy/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-polyglot/plug.vim
 " source ~/.dotfiles/vim/config/plugins/ale/plug.vim
-source ~/.dotfiles/vim/config/plugins/vim-nerdtree-syntax-highlight/plug.vim
+" source ~/.dotfiles/vim/config/plugins/vim-nerdtree-syntax-highlight/plug.vim
 " source ~/.dotfiles/vim/config/plugins/vimade/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-devicons/plug.vim
 source ~/.dotfiles/vim/config/plugins/conoline-vim/plug.vim
