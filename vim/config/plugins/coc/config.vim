@@ -1,5 +1,7 @@
 let g:coc_global_extensions = [
-	\ 'coc-css',
+    \ 'coc-css',
+	\ 'coc-eslint',
+	\ 'coc-prettier',
 	\ 'coc-highlight',
 	\ 'coc-html',
 	\ 'coc-json',
