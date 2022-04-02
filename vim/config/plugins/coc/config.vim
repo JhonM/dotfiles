@@ -189,3 +189,18 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " PLUGIN SPECIFIC CONFIG
 " PLUGIN >> Coc-explorer
 :nmap <space>e :CocCommand explorer<CR>
+
+" Ignore errors
+function Null(error, response) abort
+endfunction
+
+augroup hover
+	autocmd!
+	autocmd CursorHold * if !coc#float#has_float()
+		\| call CocActionAsync('doHover', 'float', function('Null'))
+		\| call CocActionAsync('highlight', function('Null'))
+	\| endif
+	autocmd CursorHoldI * if CocAction('ensureDocument')
+		\|silent call CocAction('showSignatureHelp')
+	\| endif
+augroup end
