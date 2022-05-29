@@ -131,6 +131,7 @@ source ~/.dotfiles/vim/config/plugins/vim-maximizer/plug.vim
 source ~/.dotfiles/vim/config/plugins/vimspector/plug.vim
 source ~/.dotfiles/vim/config/plugins/dracula/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-test/plug.vim
+source ~/.dotfiles/vim/config/plugins/copilot/plug.vim
 
 call plug#end()
 
