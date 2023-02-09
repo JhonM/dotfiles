@@ -34,7 +34,10 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " swap files dest
 set dir=/tmp
 
-" Specify a directory for plugins
+set fillchars+=vert:\ 
+hi vertsplit guifg=fg guibg=bg
+
+" Specify a directory for plugin
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 
