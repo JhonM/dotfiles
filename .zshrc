@@ -110,5 +110,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# remove and install node_modules
+alias YOM='rm -rf node_modules && yarn'
+alias NOM='rm -rf node_modules && npm install'
+
+# remove/ delete branches
 alias prune_branches='git checkout main && git fetch && git remote prune origin && git branch --merged main | grep -v "main$" | xargs git branch -d'
 alias prune_branches_remote="git branch -r --merged | grep -v main | sed 's/origin\///' | xargs -n 1 git push --delete origin"
