@@ -53,8 +53,19 @@ set clipboard+=unnamedplus
 let mapleader = "\<space>"
 
 nnoremap <leader>w <C-W>
+
+" Next buffer
 nnoremap <leader>bn :bn<cr>
-nnoremap <leader>tn gt
+
+" Previous buffer
+nnoremap <leader>bp :bp<cr>
+
+" Delete current buffer and go to next buffer in window
+nnoremap <leader>bnd :bn\|bd#<cr>
+
+" Delete current buffer and go to previous buffer in window
+nnoremap <leader>bpd :bp\|bd#<cr>
+
 
 " CTRL-SHIFT-Right is next tab
 " noremap <C-S-Right> :<C-U>bnext<CR>
