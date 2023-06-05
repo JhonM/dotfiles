@@ -143,4 +143,6 @@ endif
 
 " Theme
 syntax enable
+set background=light
 colorscheme oceanicnext
+" colorscheme vim-material
