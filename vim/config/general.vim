@@ -68,6 +68,8 @@ nnoremap <leader>bpd :bp\|bd#<cr>
 
 " Show changed files in git
 nnoremap <leader>gf :GitFiles?<CR>
+nnoremap <leader>gl :Git log<CR>
+nnoremap <leader>gb :Git blame<CR>
 
 " CTRL-SHIFT-Right is next tab
 " noremap <C-S-Right> :<C-U>bnext<CR>
