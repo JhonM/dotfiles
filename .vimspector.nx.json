@@ -1,0 +1,20 @@
+{
+  "configurations": {
+    "run": {
+      "adapter": "vscode-node",
+      "configuration": {
+        "type": "node",
+        "request": "launch",
+        "name": "Jest Current File",
+        "program": "${workspaceFolder}/node_modules/.bin/jest",
+        "args": [
+          "${fileBasenameNoExtension}",
+          "--config",
+          "${workspaceFolder}/jest.config.js"
+        ],
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  }
+}
