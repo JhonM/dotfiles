@@ -1,0 +1,18 @@
+{
+  "configurations": {
+    "launch": {
+      "adapter": "chrome",
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "uncaught": "N"
+        }
+      },
+      "configuration": {
+        "request": "launch",
+        "url": "http://localhost:3000/",
+        "webRoot": "${workspaceRoot}"
+      }
+    }
+  }
+}
