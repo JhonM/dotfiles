@@ -22,6 +22,7 @@ set hlsearch
 set relativenumber
 set lazyredraw
 set cursorline!
+set signcolumn=yes
 
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
