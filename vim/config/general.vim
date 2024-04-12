@@ -19,7 +19,6 @@ set autoread
 " set tabstop=2 shiftwidth=2 expandtab
 set number
 set hlsearch
-set relativenumber
 set lazyredraw
 set cursorline!
 set signcolumn=yes
@@ -28,6 +27,12 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 set statusline+=%F
 
+" swith between abosolut and relativen line numbers
+augroup numberToggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu | endif
+    autocmd BufLeave,FocusLost,InsertEnter,WinLeave * if &nu | set nornu | endif
+augroup END
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
