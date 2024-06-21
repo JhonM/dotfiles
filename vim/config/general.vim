@@ -1,4 +1,6 @@
 " cSpell:disable
+language en_US
+
 filetype off
 
 filetype plugin indent on    " required

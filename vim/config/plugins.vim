@@ -132,6 +132,7 @@ source ~/.dotfiles/vim/config/plugins/vimspector/plug.vim
 source ~/.dotfiles/vim/config/plugins/dracula/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-test/plug.vim
 source ~/.dotfiles/vim/config/plugins/copilot/plug.vim
+source ~/.dotfiles/vim/config/plugins/vim-material/plug.vim
 
 call plug#end()
 
@@ -141,8 +142,4 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-" Theme
 syntax enable
-set background=light
-colorscheme oceanicnext
-" colorscheme vim-material

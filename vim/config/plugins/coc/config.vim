@@ -192,6 +192,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " PLUGIN >> Coc-explorer
 :nmap <space>e :CocCommand explorer<CR>
 
+autocmd FileType coc-explorer set winblend=30
+autocmd FileType coc-explorer-border set winblend=30
+
 " Ignore errors
 function Null(error, response) abort
 endfunction
