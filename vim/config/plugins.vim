@@ -40,6 +40,7 @@ source ~/.dotfiles/vim/config/plugins/dracula/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-test/plug.vim
 source ~/.dotfiles/vim/config/plugins/copilot/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-material/plug.vim
+source ~/.dotfiles/vim/config/plugins/auto-dark-mode/plug.vim
 
 call plug#end()
 
