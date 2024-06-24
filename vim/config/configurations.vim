@@ -16,3 +16,4 @@ source ~/.dotfiles/vim/config/plugins/vim-maximizer/config.vim
 source ~/.dotfiles/vim/config/plugins/vimspector/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-test/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-material/config.vim
+source ~/.dotfiles/vim/config/plugins/auto-dark-mode/config.vim
