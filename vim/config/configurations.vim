@@ -18,3 +18,4 @@ source ~/.dotfiles/vim/config/plugins/vim-test/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-material/config.vim
 source ~/.dotfiles/vim/config/plugins/auto-dark-mode/config.vim
 source ~/.dotfiles/vim/config/plugins/choose-win/config.vim
+source ~/.dotfiles/vim/config/plugins/avante/config.vim

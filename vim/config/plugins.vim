@@ -42,6 +42,7 @@ source ~/.dotfiles/vim/config/plugins/copilot/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-material/plug.vim
 source ~/.dotfiles/vim/config/plugins/auto-dark-mode/plug.vim
 source ~/.dotfiles/vim/config/plugins/choose-win/plug.vim
+source ~/.dotfiles/vim/config/plugins/avante/plug.vim
 
 call plug#end()
 
