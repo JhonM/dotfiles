@@ -17,3 +17,15 @@ require("config.autocmds")
 
 -- Load plugin configurations
 require("config.plugin_loader").setup()
+
+require("config.fzf").setup()
+
+require("auto-dark-mode").setup({
+  update_interval = 1000,
+  set_dark_mode = function()
+    vim.o.background = "dark"
+  end,
+  set_light_mode = function()
+    vim.o.background = "light"
+  end,
+})
