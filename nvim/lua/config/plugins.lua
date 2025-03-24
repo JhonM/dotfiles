@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
   use 'f-person/auto-dark-mode.nvim'
   use 't9md/vim-choosewin'
   use 'stevearc/dressing.nvim'
+  use 'hzchirs/vim-material'
   
   -- Dependencies for Avante
   use 'MunifTanjim/nui.nvim'

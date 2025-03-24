@@ -62,3 +62,8 @@ end
 
 -- Enable syntax highlighting
 vim.cmd('syntax enable')
+
+-- vim material
+vim.g.material_style = "palenight"
+vim.o.background = "dark"
+vim.cmd("colorscheme vim-material")
