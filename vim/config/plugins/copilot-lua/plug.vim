@@ -1,0 +1,2 @@
+Plug 'zbirenbaum/copilot.lua'
+

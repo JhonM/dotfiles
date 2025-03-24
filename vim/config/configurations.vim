@@ -19,3 +19,12 @@ source ~/.dotfiles/vim/config/plugins/vim-material/config.vim
 source ~/.dotfiles/vim/config/plugins/auto-dark-mode/config.vim
 source ~/.dotfiles/vim/config/plugins/choose-win/config.vim
 source ~/.dotfiles/vim/config/plugins/avante/config.vim
+source ~/.dotfiles/vim/config/plugins/dressing/config.vim
+source ~/.dotfiles/vim/config/plugins/img-clip/config.vim
+source ~/.dotfiles/vim/config/plugins/nui/config.vim
+source ~/.dotfiles/vim/config/plugins/nvim-cmp/config.vim
+source ~/.dotfiles/vim/config/plugins/nvim-treesitter/config.vim
+source ~/.dotfiles/vim/config/plugins/nvim-web-devicons/config.vim
+source ~/.dotfiles/vim/config/plugins/plenary/config.vim
+source ~/.dotfiles/vim/config/plugins/render-markdown/config.vim
+source ~/.dotfiles/vim/config/plugins/copilot-lua/config.vim

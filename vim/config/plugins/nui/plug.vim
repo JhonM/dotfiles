@@ -1,0 +1,1 @@
+Plug 'MunifTanjim/nui.nvim'
