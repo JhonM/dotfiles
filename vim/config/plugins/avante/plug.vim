@@ -1,10 +1,4 @@
-" Deps
-Plug 'stevearc/dressing.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'MunifTanjim/nui.nvim'
-
-" Optional deps
-Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
-Plug 'HakonHarnes/img-clip.nvim'
-Plug 'zbirenbaum/copilot.lua'
+" The dependencies are already loaded from individual files in plugins.vim
+" Just load the Avante plugin itself
 Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': { -> avante#build('source=true') } }
+"Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
