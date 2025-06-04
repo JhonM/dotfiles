@@ -1,0 +1,2 @@
+Plug 'wuelnerdotexe/vim-astro'
+

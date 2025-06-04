@@ -1,0 +1,7 @@
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'williamboman/mason.nvim'
+Plug 'jay-babu/mason-nvim-dap.nvim'

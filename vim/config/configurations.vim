@@ -13,7 +13,7 @@ source ~/.dotfiles/vim/config/plugins/lightline/config.vim
 source ~/.dotfiles/vim/config/plugins/markdown-preview/config.vim
 source ~/.dotfiles/vim/config/plugins/indent-line/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-maximizer/config.vim
-source ~/.dotfiles/vim/config/plugins/vimspector/config.vim
+" source ~/.dotfiles/vim/config/plugins/vimspector/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-test/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-material/config.vim
 source ~/.dotfiles/vim/config/plugins/auto-dark-mode/config.vim
@@ -28,3 +28,5 @@ source ~/.dotfiles/vim/config/plugins/nvim-web-devicons/config.vim
 source ~/.dotfiles/vim/config/plugins/plenary/config.vim
 source ~/.dotfiles/vim/config/plugins/render-markdown/config.vim
 source ~/.dotfiles/vim/config/plugins/copilot-lua/config.vim
+source ~/.dotfiles/vim/config/plugins/nvim-dap/config.vim
+source ~/.dotfiles/vim/config/plugins/vim-astro/config.vim

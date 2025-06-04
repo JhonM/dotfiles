@@ -9,7 +9,6 @@ set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
-set termencoding=utf-8
 set runtimepath^=~/.fzf
 set backspace=indent,eol,start
 set laststatus=2
