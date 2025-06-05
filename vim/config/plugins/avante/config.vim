@@ -8,7 +8,6 @@ local dependencies = {
   'dressing',
   'plenary',
   'nui.popup',
-  'render-markdown'
 }
 
 local missing_deps = {}

@@ -46,12 +46,12 @@ source ~/.dotfiles/vim/config/plugins/dressing/plug.vim
 " Load dependencies before Avante
 source ~/.dotfiles/vim/config/plugins/nui/plug.vim
 source ~/.dotfiles/vim/config/plugins/plenary/plug.vim
-source ~/.dotfiles/vim/config/plugins/render-markdown/plug.vim
+" source ~/.dotfiles/vim/config/plugins/render-markdown/plug.vim
 source ~/.dotfiles/vim/config/plugins/img-clip/plug.vim
 source ~/.dotfiles/vim/config/plugins/nvim-cmp/plug.vim
 source ~/.dotfiles/vim/config/plugins/nvim-treesitter/plug.vim
 source ~/.dotfiles/vim/config/plugins/nvim-web-devicons/plug.vim
-source ~/.dotfiles/vim/config/plugins/copilot-lua/plug.vim
+" source ~/.dotfiles/vim/config/plugins/copilot-lua/plug.vim
 " Load Avante after its dependencies
 source ~/.dotfiles/vim/config/plugins/avante/plug.vim
 source ~/.dotfiles/vim/config/plugins/nvim-dap/plug.vim
