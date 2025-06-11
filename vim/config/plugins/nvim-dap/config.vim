@@ -2,88 +2,85 @@ lua << EOF
 local dap = require('dap')
 local dapui = require('dapui')
 
--- UI setup
 dapui.setup()
 
--- Optional: install debug adapters automatically
 require('mason').setup()
 require('mason-nvim-dap').setup({
-  ensure_installed = { 'python', 'node2' },
+  ensure_installed = { 'python', 'js-debug-adapter' },
   automatic_setup = true,
 })
 
--- Configure JavaScript/TypeScript debugging with vscode-js-debug
-dap.adapters.node2 = {
-  type = 'executable',
-  command = 'node',
-  args = { os.getenv('HOME') .. '/.local/share/nvim/mason/packages/node-debug2-adapter/out/src/nodeDebug.js' },
+-- Use pwa-node from js-debug-adapter instead of node2
+dap.adapters["pwa-node"] = {
+  type = "server",
+  host = "localhost",
+  port = "${port}",
+  executable = {
+    command = "node",
+    args = {
+      os.getenv("HOME") .. "/.local/share/nvim/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+      "${port}"
+    }
+  }
 }
 
--- Configuration for debugging Node.js
+-- Node.js
 dap.configurations.javascript = {
   {
-    name = 'Launch Node.js',
-    type = 'node2',
-    request = 'launch',
-    program = '${file}',
-    cwd = '${workspaceFolder}',
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
+    name = "Launch Node.js",
+    type = "pwa-node",
+    request = "launch",
+    program = "${file}",
+    cwd = "${workspaceFolder}",
   },
   {
-    name = 'Attach to Node Process',
-    type = 'node2',
-    request = 'attach',
-    processId = require('dap.utils').pick_process,
-    cwd = '${workspaceFolder}',
-    sourceMaps = true,
+    name = "Attach to Node Process",
+    type = "pwa-node",
+    request = "attach",
+    processId = require("dap.utils").pick_process,
+    cwd = "${workspaceFolder}",
   },
 }
 
--- Configuration for TypeScript
+-- TypeScript
 dap.configurations.typescript = {
   {
-    name = 'Launch TypeScript',
-    type = 'node2',
-    request = 'launch',
-    program = '${file}',
-    cwd = '${workspaceFolder}',
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
+    name = "Launch TypeScript",
+    type = "pwa-node",
+    request = "launch",
+    program = "${file}",
+    cwd = "${workspaceFolder}",
     outFiles = { "${workspaceFolder}/dist/**/*.js" },
-    runtimeExecutable = 'node',
-    runtimeArgs = { '--loader', 'ts-node/esm' },
+    runtimeExecutable = "node",
+    runtimeArgs = { "--loader", "ts-node/esm" },
   },
   {
-    name = 'Attach to TypeScript Process',
-    type = 'node2',
-    request = 'attach',
-    processId = require('dap.utils').pick_process,
-    cwd = '${workspaceFolder}',
-    sourceMaps = true,
+    name = "Attach to TypeScript Process",
+    type = "pwa-node",
+    request = "attach",
+    processId = require("dap.utils").pick_process,
+    cwd = "${workspaceFolder}",
     outFiles = { "${workspaceFolder}/dist/**/*.js" },
   },
 }
 
--- Configuration for React/TypeScript in browser
+-- React (browser)
 dap.adapters.chrome = {
-  type = 'executable',
-  command = 'node',
-  args = { os.getenv('HOME') .. '/.local/share/nvim/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js' }
+  type = "executable",
+  command = "node",
+  args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js" }
 }
 
 dap.configurations.javascriptreact = {
   {
-    name = 'Debug React App',
-    type = 'chrome',
-    request = 'launch',
-    url = 'http://localhost:3000',
-    webRoot = '${workspaceFolder}',
+    name = "Debug React App",
+    type = "chrome",
+    request = "launch",
+    url = "http://localhost:3000",
+    webRoot = "${workspaceFolder}",
     sourceMaps = true,
     sourceMapPathOverrides = {
-      ['webpack:///src/*'] = '${webRoot}/src/*',
+      ["webpack:///src/*"] = "${webRoot}/src/*",
     },
     userDataDir = false,
   }
@@ -91,117 +88,102 @@ dap.configurations.javascriptreact = {
 
 dap.configurations.typescriptreact = dap.configurations.javascriptreact
 
--- Configuration for Astro
+-- Astro
 dap.configurations.astro = {
   {
-    name = 'Debug Astro App',
-    type = 'chrome',
-    request = 'launch',
-    url = 'http://localhost:4321', -- Default Astro dev server port
-    webRoot = '${workspaceFolder}',
+    name = "Debug Astro App",
+    type = "chrome",
+    request = "launch",
+    url = "http://localhost:4321",
+    webRoot = "${workspaceFolder}",
     sourceMaps = true,
     sourceMapPathOverrides = {
-      ['webpack:///src/*'] = '${webRoot}/src/*',
+      ["webpack:///src/*"] = "${webRoot}/src/*",
     },
     userDataDir = false,
   }
 }
 
--- Configuration for Jest tests
-dap.configurations.javascript = vim.list_extend(dap.configurations.javascript, {
-  {
-    type = 'node2',
-    request = 'launch',
-    name = 'Jest Tests',
-    program = '${workspaceFolder}/node_modules/.bin/jest',
-    args = { '--runInBand' },
-    cwd = '${workspaceFolder}',
-    console = 'integratedTerminal',
-    internalConsoleOptions = 'neverOpen',
-    sourceMaps = true,
-  }
+-- Jest
+table.insert(dap.configurations.javascript, {
+  type = "pwa-node",
+  request = "launch",
+  name = "Jest Tests",
+  program = "${workspaceFolder}/node_modules/.bin/jest",
+  args = { "--runInBand" },
+  cwd = "${workspaceFolder}",
+  console = "integratedTerminal",
+  internalConsoleOptions = "neverOpen",
 })
 
--- Configuration for Vitest
-dap.configurations.javascript = vim.list_extend(dap.configurations.javascript, {
-  {
-    type = 'node2',
-    request = 'launch',
-    name = 'Vitest',
-    program = '${workspaceFolder}/node_modules/.bin/vitest',
-    args = { 'run' },
-    cwd = '${workspaceFolder}',
-    console = 'integratedTerminal',
-    internalConsoleOptions = 'neverOpen',
-    sourceMaps = true,
-  }
+-- Vitest
+table.insert(dap.configurations.javascript, {
+  type = "pwa-node",
+  request = "launch",
+  name = "Vitest",
+  program = "${workspaceFolder}/node_modules/.bin/vitest",
+  args = { "run" },
+  cwd = "${workspaceFolder}",
+  console = "integratedTerminal",
+  internalConsoleOptions = "neverOpen",
 })
 
--- Configuration for Playwright
-dap.configurations.javascript = vim.list_extend(dap.configurations.javascript, {
-  {
-    type = 'node2',
-    request = 'launch',
-    name = 'Playwright Tests',
-    program = '${workspaceFolder}/node_modules/.bin/playwright',
-    args = { 'test' },
-    cwd = '${workspaceFolder}',
-    console = 'integratedTerminal',
-    internalConsoleOptions = 'neverOpen',
-    sourceMaps = true,
-  }
+-- Playwright
+table.insert(dap.configurations.javascript, {
+  type = "pwa-node",
+  request = "launch",
+  name = "Playwright Tests",
+  program = "${workspaceFolder}/node_modules/.bin/playwright",
+  args = { "test" },
+  cwd = "${workspaceFolder}",
+  console = "integratedTerminal",
+  internalConsoleOptions = "neverOpen",
 })
 
--- Configuration for debugging pnpm scripts
-dap.configurations.javascript = vim.list_extend(dap.configurations.javascript, {
-  {
-    type = 'node2',
-    request = 'launch',
-    name = 'Debug pnpm Script',
-    runtimeExecutable = 'pnpm',
-    runtimeArgs = function()
-      local script_name = vim.fn.input('Script name: ')
-      return { 'run', script_name }
-    end,
-    cwd = '${workspaceFolder}',
-    console = 'integratedTerminal',
-    internalConsoleOptions = 'neverOpen',
-    sourceMaps = true,
-  }
+-- pnpm scripts
+table.insert(dap.configurations.javascript, {
+  type = "pwa-node",
+  request = "launch",
+  name = "Debug pnpm Script",
+  runtimeExecutable = "pnpm",
+  runtimeArgs = function()
+    local script_name = vim.fn.input("Script name: ")
+    return { "run", script_name }
+  end,
+  cwd = "${workspaceFolder}",
+  console = "integratedTerminal",
+  internalConsoleOptions = "neverOpen",
 })
 
--- Add a custom command to start debugging the current workspace with Astro
-vim.api.nvim_create_user_command('DebugAstro', function()
+vim.api.nvim_create_user_command("DebugAstro", function()
   dap.run({
-    name = 'Debug Astro App',
-    type = 'chrome',
-    request = 'launch',
-    url = 'http://localhost:4321',
+    name = "Debug Astro App",
+    type = "chrome",
+    request = "launch",
+    url = "https://localhost:4321",
     webRoot = vim.fn.getcwd(),
     sourceMaps = true,
     sourceMapPathOverrides = {
-      ['webpack:///src/*'] = vim.fn.getcwd() .. '/src/*',
+      ["webpack:///src/*"] = vim.fn.getcwd() .. "/src/*",
     },
     userDataDir = false,
   })
 end, {})
 
--- Add a custom command to debug the current project's web app
-vim.api.nvim_create_user_command('DebugWeb', function()
-  local cmd = vim.fn.input('Command to debug (dev/test/build): ', 'dev')
+vim.api.nvim_create_user_command("DebugWeb", function()
+  local cmd = vim.fn.input("Command to debug (dev/test/build): ", "dev")
   dap.run({
-    type = 'node2',
-    request = 'launch',
-    name = 'Debug Web App',
-    runtimeExecutable = 'pnpm',
-    runtimeArgs = { '--filter', 'web', 'run', cmd },
+    type = "pwa-node",
+    request = "launch",
+    name = "Debug Web App",
+    runtimeExecutable = "pnpm",
+    runtimeArgs = { "--filter", "web", "run", cmd },
     cwd = vim.fn.getcwd(),
-    console = 'integratedTerminal',
+    console = "integratedTerminal",
     sourceMaps = true,
   })
 end, {})
 
--- Set up DAP UI
 dapui.setup({
   layouts = {
     {
@@ -225,7 +207,6 @@ dapui.setup({
   },
 })
 
--- Automatically open and close dapui when starting/stopping debugging
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
@@ -236,19 +217,13 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
--- UI auto open/close
-dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
-dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
-dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
-
--- Keybindings
-vim.keymap.set('n', '<F5>', dap.continue)
-vim.keymap.set('n', '<F10>', dap.step_over)
-vim.keymap.set('n', '<F11>', dap.step_into)
-vim.keymap.set('n', '<F12>', dap.step_out)
-vim.keymap.set('n', '<Leader>b', dap.toggle_breakpoint)
-vim.keymap.set('n', '<Leader>B', function()
-  dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
+vim.keymap.set("n", "<F5>", dap.continue)
+vim.keymap.set("n", "<F10>", dap.step_over)
+vim.keymap.set("n", "<F11>", dap.step_into)
+vim.keymap.set("n", "<F12>", dap.step_out)
+vim.keymap.set("n", "<Leader>b", dap.toggle_breakpoint)
+vim.keymap.set("n", "<Leader>B", function()
+  dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 end)
 EOF
 
