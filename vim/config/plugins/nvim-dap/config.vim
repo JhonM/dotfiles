@@ -217,6 +217,22 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
+-- Floating DAP UI panels
+vim.keymap.set("n", "<leader>dw", function()
+  dapui.float_element("watches", { enter = true })
+end, { desc = "DAP: Show Watches (Float)" })
+
+vim.keymap.set("n", "<leader>ds", function()
+  dapui.float_element("scopes", { enter = true })
+end, { desc = "DAP: Show Scopes (Float)" })
+
+vim.keymap.set("n", "<leader>dc", function()
+  dapui.float_element("console", { enter = true })
+end, { desc = "DAP: Show Console (Float)" })
+
+vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "DAP: Toggle UI Panels" })
+vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "DAP: Open REPL" })
+
 vim.keymap.set("n", "<F5>", dap.continue)
 vim.keymap.set("n", "<F10>", dap.step_over)
 vim.keymap.set("n", "<F11>", dap.step_into)
