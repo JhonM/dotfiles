@@ -254,11 +254,11 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 -- reload current color scheme to pick up colors override if it was set up in a lazy plugin definition fashion
 vim.cmd.colorscheme(vim.g.colors_name)
 
-vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint'})
-vim.fn.sign_define('DapBreakpointCondition', {text='🟡', texthl='DapBreakpointCondition', linehl='DapBreakpointCondition', numhl='DapBreakpointCondition'})
-vim.fn.sign_define('DapBreakpointRejected', {text='⚪', texthl='DapBreakpointRejected', linehl='DapBreakpointRejected', numhl='DapBreakpointRejected'})
-vim.fn.sign_define('DapLogPoint', {text='📝', texthl='DapLogPoint', linehl='DapLogPoint', numhl='DapLogPoint'})
-vim.fn.sign_define('DapStopped', {text='➡️', texthl='DapStopped', linehl='DapStopped', numhl='DapStopped'})
+vim.fn.sign_define('DapBreakpoint', {text='●', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint'})
+vim.fn.sign_define('DapBreakpointCondition', {text='○', texthl='DapBreakpointCondition', linehl='DapBreakpointCondition', numhl='DapBreakpointCondition'})
+vim.fn.sign_define('DapBreakpointRejected', {text='✕', texthl='DapBreakpointRejected', linehl='DapBreakpointRejected', numhl='DapBreakpointRejected'})
+vim.fn.sign_define('DapLogPoint', {text='✎', texthl='DapLogPoint', linehl='DapLogPoint', numhl='DapLogPoint'})
+vim.fn.sign_define('DapStopped', {text='▶︎', texthl='DapStopped', linehl='DapStopped', numhl='DapStopped'})
 
 -- Floating DAP UI panels
 vim.keymap.set("n", "<leader>dw", function()
