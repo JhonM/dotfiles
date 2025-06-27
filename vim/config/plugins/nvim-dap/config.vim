@@ -155,6 +155,7 @@ table.insert(dap.configurations.javascript, {
   internalConsoleOptions = "neverOpen",
 })
 
+-- debug astro (9292)
 vim.api.nvim_create_user_command("DebugAstro", function()
   dap.run({
     name = "Debug Astro App",
@@ -170,6 +171,7 @@ vim.api.nvim_create_user_command("DebugAstro", function()
   })
 end, {})
 
+-- debug astro web (9292)
 vim.api.nvim_create_user_command("DebugWeb", function()
   local cmd = vim.fn.input("Command to debug (dev/test/build): ", "dev")
   dap.run({
