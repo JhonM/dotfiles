@@ -106,9 +106,21 @@ export VISUAL="$EDITOR"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias python="python3"
 
+# pnpm
+export PNPM_HOME="/Users/jhonmajoor/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+nvm use --silent default
+
+[[ -f ~/.nvmrc ]] && cat ~/.nvmrc
 
 # remove and install node_modules
 alias YOM='rm -rf node_modules && yarn'
