@@ -124,3 +124,23 @@ nnoremap <leader>n :call OpenTerminal() <CR>
 "     autocmd!
 "     au BufNewFile,BufRead *.hbs set filetype=handlebars
 " augroup END
+
+" Custom Eslint Fix
+autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx call EslintFix()
+
+function! EslintFix()
+  let l:eslint = executable('eslint_d') ? 'eslint_d' : 'eslint'
+  let l:filename = expand('%:p')
+
+  " Find the nearest package.json upwards from the current file
+  let l:root = finddir('node_modules', '.;')
+  if empty(l:root)
+    echo "No node_modules directory found in parent directories."
+    return
+  endif
+
+  let l:cwd = fnamemodify(l:root, ':h')
+  let l:cmd = printf('cd %s && %s --fix %s', shellescape(l:cwd), l:eslint, shellescape(l:filename))
+
+  call system(l:cmd)
+endfunction
