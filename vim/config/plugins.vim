@@ -52,6 +52,7 @@ source ~/.dotfiles/vim/config/plugins/nvim-cmp/plug.vim
 source ~/.dotfiles/vim/config/plugins/nvim-treesitter/plug.vim
 source ~/.dotfiles/vim/config/plugins/nvim-web-devicons/plug.vim
 " source ~/.dotfiles/vim/config/plugins/copilot-lua/plug.vim
+source ~/.dotfiles/vim/config/plugins/copilot/plug.vim
 " Load Avante after its dependencies
 source ~/.dotfiles/vim/config/plugins/avante/plug.vim
 source ~/.dotfiles/vim/config/plugins/nvim-dap/plug.vim
