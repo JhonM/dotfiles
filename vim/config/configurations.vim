@@ -27,7 +27,8 @@ source ~/.dotfiles/vim/config/plugins/nvim-treesitter/config.vim
 source ~/.dotfiles/vim/config/plugins/nvim-web-devicons/config.vim
 source ~/.dotfiles/vim/config/plugins/plenary/config.vim
 " source ~/.dotfiles/vim/config/plugins/render-markdown/config.vim
-" source ~/.dotfiles/vim/config/plugins/copilot-lua/config.vim
+source ~/.dotfiles/vim/config/plugins/copilot/config.vim
+source ~/.dotfiles/vim/config/plugins/copilot-lua/config.vim
 source ~/.dotfiles/vim/config/plugins/nvim-dap/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-astro/config.vim
 source ~/.dotfiles/vim/config/plugins/ctrlsf/config.vim
