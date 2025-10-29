@@ -58,6 +58,7 @@ source ~/.dotfiles/vim/config/plugins/avante/plug.vim
 source ~/.dotfiles/vim/config/plugins/nvim-dap/plug.vim
 source ~/.dotfiles/vim/config/plugins/vim-astro/plug.vim
 source ~/.dotfiles/vim/config/plugins/ctrlsf/plug.vim
+source ~/.dotfiles/vim/config/plugins/copilot-chat/plug.vim
 
 call plug#end()
 

@@ -32,3 +32,4 @@ source ~/.dotfiles/vim/config/plugins/copilot-lua/config.vim
 source ~/.dotfiles/vim/config/plugins/nvim-dap/config.vim
 source ~/.dotfiles/vim/config/plugins/vim-astro/config.vim
 source ~/.dotfiles/vim/config/plugins/ctrlsf/config.vim
+source ~/.dotfiles/vim/config/plugins/copilot-chat/config.vim
