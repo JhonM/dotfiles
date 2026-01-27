@@ -18,11 +18,16 @@ dap.adapters["pwa-node"] = {
   executable = {
     command = "node",
     args = {
+      -- NOTE: if this path doesn't exist on your machine, switch to:
+      -- ~/.local/share/nvim/mason/packages/js-debug-adapter/js-debug/dist/src/dapDebugServer.js
       os.getenv("HOME") .. "/.local/share/nvim/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
       "${port}"
     }
   }
 }
+
+-- ? Use pwa-chrome from js-debug-adapter (recommended for Vite/Astro/TanStack)
+dap.adapters["pwa-chrome"] = dap.adapters["pwa-node"]
 
 -- Node.js
 dap.configurations.javascript = {
@@ -64,44 +69,69 @@ dap.configurations.typescript = {
   },
 }
 
--- React (browser)
-dap.adapters.chrome = {
-  type = "executable",
-  command = "node",
-  args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js" }
-}
+-- ? Removed legacy chrome-debug-adapter (deprecated / flaky with Vite sourcemaps)
+-- dap.adapters.chrome = {
+--   type = "executable",
+--   command = "node",
+--   args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js" }
+-- }
 
+-- ? React (browser) via pwa-chrome (works well with Vite/Astro/TanStack)
 dap.configurations.javascriptreact = {
   {
-    name = "Debug React App",
-    type = "chrome",
+    name = "Chrome (pwa): Debug UI (Vite/Astro)",
+    type = "pwa-chrome",
     request = "launch",
-    url = "http://localhost:3000",
+    url = "http://localhost:4321", -- change to :3000 if your UI runs there
     webRoot = "${workspaceFolder}",
     sourceMaps = true,
-    sourceMapPathOverrides = {
-      ["webpack:///src/*"] = "${webRoot}/src/*",
+    resolveSourceMapLocations = {
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
     },
+    skipFiles = { "<node_internals>/**", "${workspaceFolder}/node_modules/**" },
     userDataDir = false,
   }
 }
 
 dap.configurations.typescriptreact = dap.configurations.javascriptreact
 
--- Astro
+-- ? Astro: prefer Node (server) + pwa-chrome (client UI)
 dap.configurations.astro = {
   {
-    name = "Debug Astro App",
-    type = "chrome",
+    name = "Astro: dev server (node --inspect)",
+    type = "pwa-node",
+    request = "launch",
+    cwd = "${workspaceFolder}",
+    runtimeExecutable = "node",
+    runtimeArgs = {
+      "--inspect",
+      "${workspaceFolder}/node_modules/astro/astro.js",
+      "dev",
+    },
+    console = "integratedTerminal",
+    internalConsoleOptions = "neverOpen",
+    sourceMaps = true,
+    resolveSourceMapLocations = {
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
+    },
+    skipFiles = { "<node_internals>/**", "${workspaceFolder}/node_modules/**" },
+  },
+  {
+    name = "Astro UI: Chrome (pwa)",
+    type = "pwa-chrome",
     request = "launch",
     url = "http://localhost:4321",
     webRoot = "${workspaceFolder}",
     sourceMaps = true,
-    sourceMapPathOverrides = {
-      ["webpack:///src/*"] = "${webRoot}/src/*",
+    resolveSourceMapLocations = {
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
     },
+    skipFiles = { "<node_internals>/**", "${workspaceFolder}/node_modules/**" },
     userDataDir = false,
-  }
+  },
 }
 
 -- Jest
@@ -155,17 +185,18 @@ table.insert(dap.configurations.javascript, {
   internalConsoleOptions = "neverOpen",
 })
 
--- debug astro (9292)
+-- ? debug astro (9292) - fixed scheme + adapter
 vim.api.nvim_create_user_command("DebugAstro", function()
   dap.run({
-    name = "Debug Astro App",
-    type = "chrome",
+    name = "Astro UI: Chrome (pwa)",
+    type = "pwa-chrome",
     request = "launch",
-    url = "https://localhost:4321",
+    url = "http://localhost:4321",
     webRoot = vim.fn.getcwd(),
     sourceMaps = true,
-    sourceMapPathOverrides = {
-      ["webpack:///src/*"] = vim.fn.getcwd() .. "/src/*",
+    resolveSourceMapLocations = {
+      vim.fn.getcwd() .. "/**",
+      "!" .. vim.fn.getcwd() .. "/node_modules/**",
     },
     userDataDir = false,
   })
@@ -193,10 +224,44 @@ vim.api.nvim_create_user_command("DebugWeb2", function()
     request = "launch",
     name = "Debug Web App",
     runtimeExecutable = "pnpm",
-    runtimeArgs = {  "run", cmd },
+    runtimeArgs = { "run", cmd },
     cwd = vim.fn.getcwd(),
     console = "integratedTerminal",
     sourceMaps = true,
+  })
+end, {})
+
+
+-- debug web (9292) with required env vars
+vim.api.nvim_create_user_command("DebugWeb9292", function()
+  local secret = vim.fn.inputsecret("PUBLIC_HMAC_SECRET: ")
+
+  if secret == "" then
+    vim.notify("DebugWeb9292 cancelled: no secret provided", vim.log.levels.WARN)
+    return
+  end
+
+  dap.run({
+    type = "pwa-node",
+    request = "launch",
+    name = "Debug Web (9292)",
+    runtimeExecutable = "pnpm",
+    runtimeArgs = {
+      "run",
+      "--filter",
+      "web",
+      "dev",
+      "--",
+      "--host",
+    },
+    cwd = vim.fn.getcwd(),
+    console = "integratedTerminal",
+    sourceMaps = true,
+
+    env = {
+      WEB_API_PROXY_URL = "https://web-api-acc-001.9292.nl",
+      PUBLIC_HMAC_SECRET = secret,
+    },
   })
 end, {})
 
