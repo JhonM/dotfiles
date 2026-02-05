@@ -82,7 +82,7 @@ dap.configurations.javascriptreact = {
     name = "Chrome (pwa): Debug UI (Vite/Astro)",
     type = "pwa-chrome",
     request = "launch",
-    url = "http://localhost:4321", -- change to :3000 if your UI runs there
+    url = "https://localhost:4321", -- change to :3000 if your UI runs there
     webRoot = "${workspaceFolder}",
     sourceMaps = true,
     resolveSourceMapLocations = {
@@ -122,7 +122,7 @@ dap.configurations.astro = {
     name = "Astro UI: Chrome (pwa)",
     type = "pwa-chrome",
     request = "launch",
-    url = "http://localhost:4321",
+    url = "https://localhost:4321",
     webRoot = "${workspaceFolder}",
     sourceMaps = true,
     resolveSourceMapLocations = {
@@ -141,6 +141,18 @@ table.insert(dap.configurations.javascript, {
   name = "Jest Tests",
   program = "${workspaceFolder}/node_modules/.bin/jest",
   args = { "--runInBand" },
+  cwd = "${workspaceFolder}",
+  console = "integratedTerminal",
+  internalConsoleOptions = "neverOpen",
+})
+
+-- Vite
+table.insert(dap.configurations.javascript, {
+  type = "pwa-node",
+  request = "launch",
+  name = "Vite Dev Server",
+  program = "${workspaceFolder}/node_modules/.bin/vite",
+  args = {},
   cwd = "${workspaceFolder}",
   console = "integratedTerminal",
   internalConsoleOptions = "neverOpen",
@@ -191,7 +203,7 @@ vim.api.nvim_create_user_command("DebugAstro", function()
     name = "Astro UI: Chrome (pwa)",
     type = "pwa-chrome",
     request = "launch",
-    url = "http://localhost:4321",
+    url = "https://localhost:4321",
     webRoot = vim.fn.getcwd(),
     sourceMaps = true,
     resolveSourceMapLocations = {
@@ -235,16 +247,18 @@ end, {})
 -- debug web (9292) with required env vars
 vim.api.nvim_create_user_command("DebugWeb9292", function()
   local secret = vim.fn.inputsecret("PUBLIC_HMAC_SECRET: ")
-
   if secret == "" then
     vim.notify("DebugWeb9292 cancelled: no secret provided", vim.log.levels.WARN)
     return
   end
 
+  local root = vim.fn.getcwd()
+  local web = root .. "/apps/web"
+
   dap.run({
     type = "pwa-node",
     request = "launch",
-    name = "Debug Web (9292)",
+    name = "Debug Web (9292) - dev server",
     runtimeExecutable = "pnpm",
     runtimeArgs = {
       "run",
@@ -254,14 +268,102 @@ vim.api.nvim_create_user_command("DebugWeb9292", function()
       "--",
       "--host",
     },
-    cwd = vim.fn.getcwd(),
+
+    -- ? important: point cwd to the app when in monorepo
+    cwd = web,
+
     console = "integratedTerminal",
     sourceMaps = true,
+    autoAttachChildProcesses = true,
 
     env = {
       WEB_API_PROXY_URL = "https://web-api-acc-001.9292.nl",
       PUBLIC_HMAC_SECRET = secret,
+      NODE_OPTIONS = "--enable-source-maps",
     },
+  })
+end, {})
+
+vim.api.nvim_create_user_command("DebugWebUI", function()
+  local root = vim.fn.getcwd()
+  local web = root .. "/apps/web"
+
+  dap.run({
+    name = "Web UI: Chrome (pwa) - apps/web",
+    type = "pwa-chrome",
+    request = "launch",
+
+    -- Use the actual URL you browse to
+    url = "https://localhost:4321",
+
+    -- ? webRoot should be the app root that contains src/public/index.html (Vite)
+    webRoot = web,
+
+    sourceMaps = true,
+
+    -- ? allow sourcemaps from both apps/web AND packages/*
+    resolveSourceMapLocations = {
+      web .. "/**",
+      root .. "/packages/**",
+      "!" .. root .. "/**/node_modules/**",
+    },
+
+    -- Optional: helps when a monorepo produces “weird” paths
+    -- (especially if you notice breakpoints bind to wrong file)
+    sourceMapPathOverrides = {
+      ["webpack:///./*"] = web .. "/*",
+      ["webpack:///*"] = web .. "/*",
+      ["vite:///*"] = root .. "/*",
+      ["@fs/*"] = "/*",
+    },
+
+    userDataDir = false,
+  })
+end, {})
+
+vim.api.nvim_create_user_command("DebugUI", function()
+  local root = vim.fn.getcwd()
+  local web = root
+
+  -- Accept:
+  --   localhost:5173
+  --   http://localhost:5173
+  --   https://localhost:5173
+  --   5173
+  local input = vim.fn.input("Host/port (e.g. localhost:5173 or 3000): ", "localhost:5173")
+
+  local url = input
+  if input:match("^%d+$") then
+    url = "http://localhost:" .. input
+  elseif not input:match("^https?://") then
+    url = "http://" .. input
+  end
+
+  dap.run({
+    name = "UI: Chrome (pwa) " .. url,
+    type = "pwa-chrome",
+    request = "launch",
+    url = url,
+
+    -- ? for Vite/Astro this should be the app root
+    webRoot = web,
+
+    sourceMaps = true,
+    resolveSourceMapLocations = {
+      web .. "/**",
+      root .. "/packages/**",
+      "!" .. root .. "/**/node_modules/**",
+    },
+
+    -- Helpful in monorepos / Vite
+    sourceMapPathOverrides = {
+      ["webpack:///./*"] = web .. "/*",
+      ["webpack:///*"] = web .. "/*",
+      ["vite:///*"] = root .. "/*",
+      ["@fs/*"] = "/*",
+    },
+
+    userDataDir = false,
   })
 end, {})
 
