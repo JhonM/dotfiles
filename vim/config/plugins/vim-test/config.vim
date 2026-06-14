@@ -28,7 +28,7 @@ autocmd FileType javascript,typescript,javascriptreact,typescriptreact
 let g:test#javascript#runner = 'vitest'
 
 " 3) Executable: String
-let g:test#javascript#vitest#executable = 'pnpm vitest'
+" let g:test#javascript#vitest#executable = 'pnpm vitest'
 
 " 4) Options: Dictionary
 let g:test#javascript#vitest#options = { 'nearest': '--run --mode development', 'file': '--run --mode development', 'suite': '--run --mode development', 'visit': '--mode development' }
