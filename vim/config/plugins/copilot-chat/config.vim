@@ -6,7 +6,7 @@ require('CopilotChat').setup({
 
   -- Optional: Set a custom model for Copilot Chat
   model = "gpt-5-mini",
-   window = {
+  window = {
     layout = 'vertical', -- 'vertical', 'float' or 'horizontal'
     width = 80, -- Fixed width in columns
     border = 'rounded', -- 'single', 'double', 'rounded', 'solid'
