@@ -36,4 +36,19 @@ require('CopilotChat').setup({
 vim.g.copilot_no_tab_map = true
 vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
 
+-- Keybinding to open Copilot Chat
+vim.keymap.set('n', '<leader>cc', '<cmd>CopilotChat<CR>', { noremap = true, silent = true  })
+
+-- Keybinding to reset Copilot Chat
+vim.keymap.set('n', '<leader>cr', '<cmd>CopilotChatReset<CR>', { noremap = true, silent = true  })
+
+-- Keybinding to toggle Copilot Chat
+vim.keymap.set('n', '<leader>ct', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true  })
+
+-- Keybinding to send a message in Copilot Chat
+vim.keymap.set('n', '<leader>cs', '<cmd>CopilotChatSend<CR>', { noremap = true, silent = true  })
+
+-- Keybinding to add visual selection to Copilot Chat
+vim.keymap.set('v', '<leader>ca', '<cmd>CopilotChatAddSelection<CR>', { noremap = true, silent = true  })
+
 EOF
