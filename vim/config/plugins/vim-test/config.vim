@@ -37,7 +37,18 @@ let g:test#javascript#vitest#options = { 'nearest': '--run --mode development', 
 let g:test#strategy = 'neovim'
 
 " 6) File pattern: String
-let g:test#javascript#vitest#file_pattern = '\v(test|spec)\.(ts|tsx|js|jsx)$'
+let g:test#javascript#vitest#file_pattern = '\v(test|spec|stories)\.(ts|tsx|js|jsx)$'
+
+" Add the Storybook project only for story files
+function! StorybookTransform(cmd) abort
+  if a:cmd =~# '\.stories\.\(js\|jsx\|ts\|tsx\)'
+    return a:cmd . ' --project=storybook'
+  endif
+  return a:cmd
+endfunction
+
+let g:test#custom_transformations = {'storybook': function('StorybookTransform')}
+let g:test#transformation = 'storybook'
 
 " Callback used by termopen()
 function! s:OnExit(win, job_id, code, event) abort
