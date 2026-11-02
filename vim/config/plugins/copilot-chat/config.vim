@@ -20,7 +20,6 @@ require('CopilotChat').setup({
   },
 
   separator = '--',
-  auto_fold = true, -- Automatically folds non-assistant messages
 
   -- Optional: Customize the chat window appearance
   -- window = {
@@ -30,7 +29,17 @@ require('CopilotChat').setup({
   -- },
 
   -- Optional: Enable or disable automatic suggestions
+  auto_fold = false, -- Automatically folds non-assistant messages
   auto_suggestions = false,
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = 'copilot-chat',
+  callback = function()
+    vim.opt_local.relativenumber = false
+    vim.opt_local.number = false
+    vim.opt_local.conceallevel = 0
+  end,
 })
 
 vim.g.copilot_no_tab_map = true
